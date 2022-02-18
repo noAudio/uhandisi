@@ -1,1 +1,1 @@
-An absolute bare-bones web app.
+An Elite: Dangerous companion tool that aids in engineering.

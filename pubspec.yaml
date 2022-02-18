@@ -1,6 +1,6 @@
 name: uhandisi
-description: An absolute bare-bones web app.
-version: 1.0.0
+description: An Elite: Dangerous companion tool that aids in engineering.
+version: 0.0.1
 # homepage: https://www.example.com
 
 environment:
