@@ -10,11 +10,21 @@ html, body {
   font-family: 'Poppins', sans-serif;
 }
 
-#logo {
-  font-family: 'Josefin Sans', sans-serif;
+nav {
+  width: 80%;
+  padding-top: 0.1%;
+  padding-left: 10%;
 }
 
-#output {
-  padding: 20px;
-  text-align: center;
+#logo {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 59px;
+  background: -webkit-linear-gradient(left, rgba(255,110,127,1) , rgba(191,233,255,1));
+  background: -o-linear-gradient(right, rgba(255,110,127,1), rgba(191,233,255,1));
+  background: -moz-linear-gradient(right, rgba(255,110,127,1), rgba(191,233,255,1));
+  background: linear-gradient(to right, rgba(255,110,127,1) , rgba(191,233,255,1));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 20%;
 }
