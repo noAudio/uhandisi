@@ -1,16 +1,16 @@
 import 'dart:html';
 
 class TextBoxView {
-  TextInputElement coriolisLinkInput(
-          String placeholder, List<String> classes) =>
-      TextInputElement()
+  Element textBoxView(String placeholder, int? rows) {
+    if (rows != null) {
+      return TextAreaElement()
         ..placeholder = placeholder
-        ..classes = classes;
-
-  TextAreaElement materialInput(
-          String placeholder, List<String> classes, int rows) =>
-      TextAreaElement()
-        ..placeholder = placeholder
-        ..classes = classes
+        ..className = ''
         ..rows = rows;
+    } else {
+      return TextInputElement()
+        ..placeholder = placeholder
+        ..className = '';
+    }
+  }
 }
