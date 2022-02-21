@@ -1,5 +1,6 @@
-import 'dart:html';
+import 'package:uhandisi/app.dart';
 
 void main() {
-  querySelector('#output')?.text = 'Your Dart app is running.';
+  var app = App();
+  app;
 }
