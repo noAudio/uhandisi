@@ -28,3 +28,42 @@ nav {
   -webkit-text-fill-color: transparent;
   width: 20%;
 }
+
+.list-generator {
+  display: flex;
+  flex-direction: row;
+}
+
+.link-section {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.tab-switcher {
+  padding: 3% 0%;
+}
+
+.tab {
+  padding-right: 5%;
+  text-decoration: none;
+}
+
+.textbox-section {
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn {
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+  background-color: #24B4FF;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}

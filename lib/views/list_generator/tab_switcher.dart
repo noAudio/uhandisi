@@ -7,12 +7,15 @@ class TabSwitcherView {
       ..children = [
         AnchorElement()
           ..href = '#'
-          ..className = 'materials-tab'
-          ..text = 'Material list',
+          ..classes = ['tab', 'materials-tab']
+          ..text = 'Material list'
+          ..style.color = 'black'
+          ..style.fontWeight = 'bold',
         AnchorElement()
           ..href = '#'
-          ..className = 'coriolis-tab'
-          ..text = 'Coriolis link',
+          ..classes = ['tab', 'coriolis-tab']
+          ..text = 'Coriolis link'
+          ..style.color = 'grey',
       ];
   }
 }
