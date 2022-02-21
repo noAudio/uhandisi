@@ -2,7 +2,7 @@ import 'dart:html';
 
 class InstructionsView {
   List<Element> instructionsView(String title, String instructions) => [
-        HeadingElement.h1()
+        HeadingElement.h2()
           ..text = title
           ..className = 'instructions-title',
         ParagraphElement()
