@@ -27,6 +27,11 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: 20%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
 }
 
 .list-generator {
@@ -57,6 +62,7 @@ nav {
   width: 100%;
   border-radius: 5px;
   font-family: 'Poppins', sans-serif;
+  resize: none;
 }
 
 .btn {
