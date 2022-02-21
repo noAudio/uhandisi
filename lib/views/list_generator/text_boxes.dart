@@ -6,14 +6,14 @@ class TextBoxView {
     ..className = 'btn'
     ..onClick.listen((event) {});
 
-  DivElement textBoxView(String placeholder, int? rows) {
+  DivElement textBoxView(String placeholder, [int? rows]) {
     if (rows != null) {
       return DivElement()
         ..className = 'textbox-section'
         ..children = [
           TextAreaElement()
             ..placeholder = placeholder
-            ..className = ''
+            ..className = 'input'
             ..rows = rows,
           submitButton,
         ];
@@ -23,7 +23,7 @@ class TextBoxView {
         ..children = [
           TextInputElement()
             ..placeholder = placeholder
-            ..className = '',
+            ..className = 'input',
           submitButton,
         ];
     }
