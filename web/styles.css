@@ -31,6 +31,9 @@ nav {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+nav a {
   text-decoration: none;
 }
 
@@ -39,10 +42,15 @@ nav {
   flex-direction: row;
 }
 
+.instructions-section {
+  padding: 0% 1%;
+}
+
 .link-section {
   display: flex;
   flex-direction: column;
   text-align: left;
+  padding: 0% 1%;
 }
 
 .tab-switcher {
