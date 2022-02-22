@@ -1,0 +1,36 @@
+import 'dart:html';
+
+import 'package:uhandisi/views/list_generator/instructions.dart';
+import 'package:uhandisi/views/list_generator/tab_switcher.dart';
+import 'package:uhandisi/views/list_generator/text_boxes.dart';
+
+class ListGeneratorView {
+  final appInstructions = '''
+    Use the tab to switch between link mode and material list mode. In link mode, paste a coriolis link so that the app will generate a list of materials based on your build. In materials list mode, paste in the list of materials to have them sorted.
+''';
+  bool isCoriolis = false;
+
+  DivElement listGeneratorView() {
+    return DivElement()
+      ..className = 'list-generator'
+      ..children = [
+        DivElement()
+          ..className = 'link-section'
+          ..children = [
+            TabSwitcherView().tabSwitcherView(),
+            isCoriolis
+                ? TextBoxView().textBoxView('Enter coriolis link')
+                : TextBoxView().textBoxView(
+                    'Enter list of materials i.e Material: Amount', 4),
+          ],
+        DivElement()
+          ..className = 'instructions-section'
+          ..children = InstructionsView().instructionsView(
+            'Instructions',
+            appInstructions,
+          ),
+      ];
+  }
+
+  void switchTabs() => !isCoriolis;
+}
