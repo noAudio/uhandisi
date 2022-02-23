@@ -94,6 +94,7 @@ nav a {
 .tab {
   padding-right: 5%;
   text-decoration: none;
+  font-size: 20px;
 }
 
 .textbox-section {
@@ -105,6 +106,10 @@ nav a {
   border-radius: 5px;
   font-family: 'Poppins', sans-serif;
   resize: none;
+}
+
+.textarea {
+  padding: 3%;
 }
 
 .btn {

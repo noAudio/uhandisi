@@ -13,7 +13,7 @@ class TextBoxView {
         ..children = [
           TextAreaElement()
             ..placeholder = placeholder
-            ..className = 'input'
+            ..className = 'input textarea'
             ..rows = rows,
           submitButton,
         ];
@@ -23,7 +23,7 @@ class TextBoxView {
         ..children = [
           TextInputElement()
             ..placeholder = placeholder
-            ..className = 'input',
+            ..className = 'input textbox',
           submitButton,
         ];
     }
