@@ -1,6 +1,5 @@
 import 'dart:html';
 import 'package:uhandisi/views/list_generator/list_generator.dart';
-import 'package:uhandisi/views/list_generator/tab_switcher.dart';
 
 class App {
   var root = querySelector('#root') as DivElement;
