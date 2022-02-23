@@ -6,7 +6,7 @@ class TextBoxView {
     ..className = 'btn'
     ..onClick.listen((event) {});
 
-  DivElement textBoxView(String placeholder, [int? rows]) {
+  DivElement textBoxView({required String placeholder, int? rows}) {
     if (rows != null) {
       return DivElement()
         ..className = 'textbox-section'

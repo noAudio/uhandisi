@@ -19,9 +19,10 @@ class ListGeneratorView {
           ..children = [
             TabSwitcherView().tabSwitcherView(),
             isCoriolis
-                ? TextBoxView().textBoxView('Enter coriolis link')
+                ? TextBoxView().textBoxView(placeholder: 'Enter coriolis link')
                 : TextBoxView().textBoxView(
-                    'Enter list of materials i.e Material: Amount', 4),
+                    placeholder: 'Enter list of materials i.e Material: Amount',
+                    rows: 4),
           ],
         DivElement()
           ..className = 'instructions-section'
