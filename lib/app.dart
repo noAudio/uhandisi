@@ -9,9 +9,6 @@ class App {
   }
 
   void run() {
-    // root.append(
-    //   ListGeneratorView().listGeneratorView(),
-    // );
     root.children.addAll([
       DivElement()..classes = ['section', 'left'],
       DivElement()
