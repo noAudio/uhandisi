@@ -1,6 +1,8 @@
 import 'dart:html';
 
 class UserControls {
+  bool isSaved = false;
+
   DivElement userControls() {
     return DivElement()
       ..className = 'user-controls'
@@ -10,15 +12,22 @@ class UserControls {
           ..children.addAll([
             HeadingElement.h4()..text = 'Save list',
             InputElement()
-              ..className = 'save-textbox'
+              ..classes = ['input', 'save-textbox']
               ..placeholder = 'Name',
-            ButtonElement()
-              ..className = 'save-button'
-              ..text = 'Save list',
+            !isSaved
+                ? (ButtonElement()
+                  ..className = 'save-button'
+                  ..text = 'Save list')
+                : (ParagraphElement()
+                  ..className = 'saved-info'
+                  ..text = 'Saved!'),
           ]),
         ButtonElement()
           ..className = 'reset-button'
-          ..text = 'RESET',
+          ..text = 'RESET'
+          ..title = 'Click to clear list.',
       ];
   }
+
+  void saveList(Event event) => !isSaved;
 }
