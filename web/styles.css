@@ -146,6 +146,11 @@ nav a {
   color: #24B4FF;
   font-size: small;
 }
+
 .list-item:hover {
   font-size: large;
+}
+
+.prev-title {
+  margin-bottom: 0;
 }
