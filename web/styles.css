@@ -1,3 +1,4 @@
+/* Global styles */
 * {
   box-sizing: border-box;
 }
@@ -10,10 +11,18 @@ html, body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* Nav area */
 nav {
-  width: 80%;
-  padding-top: 0.1%;
-  padding-left: 10%;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+nav a {
+  text-decoration: none;
+  width: auto;
+  padding: 0% 20vw;
 }
 
 #logo {
@@ -26,16 +35,39 @@ nav {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  width: 20%;
+  /* width: auto; */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-nav a {
-  text-decoration: none;
+#root {
+  display: flex;
+  flex-direction: row;
 }
+
+/* SECTIONS */
+.section {
+  height: 100vh;
+}
+
+/* Left sidebar */
+.left {
+  width: 20vw;
+}
+
+/* Right sidebar */
+.right {
+  width: 20vw;
+}
+
+/* Content area */
+.mid {
+  width: 60vw;
+}
+
+/* List generator styling */
 
 .list-generator {
   display: flex;
@@ -44,6 +76,7 @@ nav a {
 
 .instructions-section {
   padding: 0% 1%;
+  width: 60%;
 }
 
 .link-section {
@@ -51,6 +84,7 @@ nav a {
   flex-direction: column;
   text-align: left;
   padding: 0% 1%;
+  width: 40%;
 }
 
 .tab-switcher {
