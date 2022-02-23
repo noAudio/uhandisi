@@ -1,7 +1,7 @@
 import 'dart:html';
 
 class TabSwitcherView {
-  Element tabSwitcherView() {
+  DivElement tabSwitcherView() {
     return DivElement()
       ..className = 'tab-switcher'
       ..children = [
