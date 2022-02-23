@@ -120,3 +120,31 @@ nav a {
   padding-top: 1%;
   padding-bottom: 1%;
 }
+
+/* Previous lists section */
+.previous-list {
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  height: 100%;
+}
+
+.lists-section {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.lists-info {
+  color: grey;
+}
+
+.list-item {
+  padding: 1% 0%;
+  text-decoration: none;
+  color: #24B4FF;
+  font-size: small;
+}
+.list-item:hover {
+  font-size: large;
+}
