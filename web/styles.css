@@ -205,3 +205,17 @@ nav a {
   font-weight: bold;
   margin-top: 20px;
 }
+
+.sorted-section {
+  text-align: center;
+}
+
+.sorted-info {
+  color: grey;
+  font-size: small;
+  padding: 10% 0%;
+}
+
+.sorted-section-title {
+  padding: 3% 0;
+}
