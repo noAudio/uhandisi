@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'package:uhandisi/views/list_generator/list_generator.dart';
 import 'package:uhandisi/views/previous_list/previous_list.dart';
+import 'package:uhandisi/views/sorted_materials/sorted_materials.dart';
 import 'package:uhandisi/views/user_controls/user_controls.dart';
 
 class App {
@@ -18,9 +19,10 @@ class App {
         ),
       DivElement()
         ..classes = ['section', 'mid']
-        ..append(
+        ..children.addAll([
           ListGeneratorView().listGeneratorView(),
-        ),
+          SortedMaterials().sortedMaterials(),
+        ]),
       DivElement()
         ..classes = ['section', 'right']
         ..append(
