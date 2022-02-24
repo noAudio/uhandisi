@@ -206,6 +206,7 @@ nav a {
   margin-top: 20px;
 }
 
+/* Sorted section */
 .sorted-section {
   text-align: center;
 }
@@ -218,4 +219,12 @@ nav a {
 
 .sorted-section-title {
   padding: 3% 0;
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
 }
