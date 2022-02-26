@@ -228,3 +228,9 @@ nav a {
   width: 100%;
   justify-content: space-between;
 }
+
+.mat-list {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
