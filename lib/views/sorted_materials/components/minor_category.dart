@@ -28,8 +28,22 @@ class MinorCategory {
 
   DivElement matMaker({required String name, required int number}) {
     String _name = name.replaceAll(' ', '').toLowerCase();
+
     return DivElement()
       ..className = 'material'
+      ..id = '$_name-container'
+      ..onMouseOver.listen((event) {
+        var div = querySelector('#$_name-container') as DivElement;
+        if (div.children.length <= 2) {
+          div.append(DivElement()..text = 'hai');
+        }
+      })
+      ..onMouseLeave.listen(
+        (event) {
+          var div = querySelector('#$_name-container') as DivElement;
+          div.children.last.remove();
+        },
+      )
       ..children.addAll([
         CheckboxInputElement()
           ..id = '$_name-check'
@@ -39,7 +53,7 @@ class MinorCategory {
           ..htmlFor = '$_name-check'
           ..className = 'material-text'
           ..id = '$_name-label'
-          ..text = '$name: $number'
+          ..text = '$name: $number',
       ]);
   }
 
