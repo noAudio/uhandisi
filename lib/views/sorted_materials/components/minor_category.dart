@@ -14,11 +14,11 @@ class MinorCategory {
     };
     return DivElement()
       ..className = 'min-category'
-      ..id = '${categoryName.replaceAll(' ', '-')}-container'
+      ..id = '${categoryName.replaceAll(" ", "-").toLowerCase()}-container'
       ..children.addAll([
         HeadingElement.h4()..text = categoryName,
         DivElement()
-          ..className = 'sdd'
+          ..className = 'mat-list'
           ..children.addAll([
             for (MapEntry mat in mats.entries)
               matMaker(name: mat.key, number: mat.value)
