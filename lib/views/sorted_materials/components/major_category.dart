@@ -7,6 +7,7 @@ class MajorCategory {
     required String id,
     /*required Map<String, int> materials*/
   }) {
+    // TODO: Set concrete widths for the columns
     return DivElement()
       ..className = 'maj-category'
       ..id = id
