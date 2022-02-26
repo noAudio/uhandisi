@@ -234,3 +234,9 @@ nav a {
   flex-direction: column;
   text-align: left;
 }
+
+.strike-txt {
+  text-decoration: line-through;
+  font-style: italic;
+  color: grey;
+}
