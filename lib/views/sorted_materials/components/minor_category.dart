@@ -28,6 +28,28 @@ class MinorCategory {
 
   DivElement matMaker({required String name, required int number}) {
     String _name = name.replaceAll(' ', '').toLowerCase();
+    // TODO: Refactor component into its own file
+    DivElement materialControls = DivElement()
+      ..className = 'controls-container'
+      ..children = [
+        // TODO: Add event listeners
+        DivElement()
+          ..className = 'controls'
+          ..title = 'Decrease by one.'
+          ..appendHtml(
+              '<span class="material-icons-outlined control-icon">&#xe15b;</span>'),
+        DivElement()
+          ..className = 'controls'
+          ..title = 'Increase by one.'
+          ..appendHtml(
+              '<span class="material-icons-outlined control-icon">&#xe145;</span>'),
+        DivElement()
+          ..className = 'controls'
+          ..title = 'Remove from list.'
+          ..appendHtml(
+              '<span class="material-icons-outlined control-icon">&#xe872;</span>')
+          ..style.color = 'red',
+      ];
 
     return DivElement()
       ..className = 'material'
@@ -35,7 +57,7 @@ class MinorCategory {
       ..onMouseOver.listen((event) {
         var div = querySelector('#$_name-container') as DivElement;
         if (div.children.length <= 2) {
-          div.append(DivElement()..text = 'hai');
+          div.append(materialControls);
         }
       })
       ..onMouseLeave.listen(
