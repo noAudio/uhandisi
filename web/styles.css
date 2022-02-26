@@ -240,3 +240,33 @@ nav a {
   font-style: italic;
   color: grey;
 }
+
+.material {
+  display: flex;
+  flex-direction: row;
+  height: 25px;
+  align-items: center;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.controls {
+  color: black;
+  cursor: pointer;
+}
+
+.control-icon {
+  font-size: 18px;
+}
+
+.controls:focus {
+  color: black;
+}
+
+.controls:hover {
+  margin-top: -1px;
+}
