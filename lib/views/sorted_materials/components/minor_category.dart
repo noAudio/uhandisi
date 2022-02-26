@@ -45,9 +45,9 @@ class MinorCategory {
 
   void strikeText(Event event) {
     var target = event.target as CheckboxInputElement;
-    var labelID = '#${target.id.split("-")[0]}-label';
-    print(labelID);
-    var label = querySelector(labelID) as LabelElement;
+    var label =
+        querySelector('#${target.id.split("-")[0]}-label') as LabelElement;
+
     if (target.checked == true && !label.classes.contains('strike-text')) {
       label.classes.add('strike-txt');
     } else {
