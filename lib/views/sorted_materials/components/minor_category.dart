@@ -28,7 +28,7 @@ class MinorCategory {
 
   DivElement matMaker({required String name, required int number}) {
     String _name = name.replaceAll(' ', '').toLowerCase();
-    // TODO: Refactor component into its own file
+    // TODO: #6 Refactor component into its own file
     DivElement materialControls = DivElement()
       ..className = 'controls-container'
       ..children = [
