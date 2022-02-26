@@ -1,3 +1,5 @@
+/* TODO: Compact repeated styles into utility classes */
+
 /* Global styles */
 * {
   box-sizing: border-box!important;
@@ -227,6 +229,16 @@ nav a {
   height: 100%;
   width: 100%;
   justify-content: space-between;
+}
+
+.min-category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.min-category h4 {
+  margin-bottom: 0;
 }
 
 .mat-list {
