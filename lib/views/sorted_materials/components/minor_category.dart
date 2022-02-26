@@ -26,14 +26,32 @@ class MinorCategory {
       ]);
   }
 
-  DivElement matMaker({required String name, required int number}) =>
-      DivElement()
-        ..className = 'material'
-        ..children.addAll([
-          CheckboxInputElement()..id = '$name-check',
-          LabelElement()
-            ..htmlFor = '#$name-check'
-            ..className = 'material-text'
-            ..text = '$name: $number'
-        ]);
+  DivElement matMaker({required String name, required int number}) {
+    String _name = name.replaceAll(' ', '').toLowerCase();
+    return DivElement()
+      ..className = 'material'
+      ..children.addAll([
+        CheckboxInputElement()
+          ..id = '$_name-check'
+          ..className = 'check'
+          ..onClick.listen(strikeText),
+        LabelElement()
+          ..htmlFor = '$_name-check'
+          ..className = 'material-text'
+          ..id = '$_name-label'
+          ..text = '$name: $number'
+      ]);
+  }
+
+  void strikeText(Event event) {
+    var target = event.target as CheckboxInputElement;
+    var labelID = '#${target.id.split("-")[0]}-label';
+    print(labelID);
+    var label = querySelector(labelID) as LabelElement;
+    if (target.checked == true && !label.classes.contains('strike-text')) {
+      label.classes.add('strike-txt');
+    } else {
+      label.classes.remove('strike-txt');
+    }
+  }
 }
