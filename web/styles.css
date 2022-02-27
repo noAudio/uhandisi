@@ -209,6 +209,10 @@ nav a {
   padding: 3% 0;
 }
 
+.content {
+  overflow: auto;
+}
+
 .categories {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

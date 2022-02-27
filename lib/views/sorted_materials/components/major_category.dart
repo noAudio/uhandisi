@@ -16,7 +16,7 @@ class MajorCategory {
           ..className = 'maj-category-title'
           ..text = '${id.toUpperCase()} MATERIALS',
         DivElement()
-          ..className = 'sas'
+          ..className = 'content'
           ..children.add(
               MinorCategory().minorCategory(categoryName: 'MINOR CATEGORY')),
       ]);
