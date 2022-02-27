@@ -1,4 +1,4 @@
-/* TODO: Compact repeated styles into utility classes */
+/* TODO: #8 Compact repeated styles into utility classes */
 
 /* Global styles */
 * {
@@ -224,17 +224,15 @@ nav a {
 }
 
 .categories {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .min-category {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 3%;
 }
 
 .min-category h4 {
