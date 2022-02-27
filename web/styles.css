@@ -1,3 +1,5 @@
+/* TODO: #8 Compact repeated styles into utility classes */
+
 /* Global styles */
 * {
   box-sizing: border-box!important;
@@ -12,11 +14,20 @@ html, body {
   overflow: hidden;
 }
 
+/* Utility classes */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 /* Nav area */
 nav {
   width: 100vw;
-  display: flex;
-  flex-direction: row;
   text-align: center;
 }
 
@@ -44,8 +55,6 @@ nav a {
 }
 
 #root {
-  display: flex;
-  flex-direction: row;
   width: 99vw;
   height: 100vh;
   margin: 0;
@@ -73,20 +82,12 @@ nav a {
 }
 
 /* List generator styling */
-
-.list-generator {
-  display: flex;
-  flex-direction: row;
-}
-
 .instructions-section {
   padding: 0% 1%;
   width: 60%;
 }
 
 .link-section {
-  display: flex;
-  flex-direction: column;
   text-align: left;
   padding: 0% 1%;
   width: 40%;
@@ -126,16 +127,11 @@ nav a {
 
 /* Previous lists section */
 .previous-list {
-  display: flex;
-  flex-direction: column;
   padding: 3% 20%;
   height: 100%;
-  /* justify-content: center; */
 }
 
 .lists-section {
-  display: flex;
-  flex-direction: column;
   overflow: auto;
 }
 
@@ -161,17 +157,9 @@ nav a {
 
 /* User controls section */
 .user-controls {
-  display: flex;
-  flex-direction: column;
   padding: 0 20%;
   width: 100%;
   height: 100%;
-  /* justify-content: center; */
-}
-
-.save-section {
-  display: flex;
-  flex-direction: column;
 }
 
 .save-textbox {
@@ -204,4 +192,73 @@ nav a {
   color: #FF0000;
   font-weight: bold;
   margin-top: 20px;
+}
+
+/* Sorted section */
+.sorted-section {
+  text-align: center;
+}
+
+.sorted-info {
+  color: grey;
+  font-size: small;
+  padding: 10% 0%;
+}
+
+.sorted-section-title {
+  padding: 3% 0;
+}
+
+.content {
+  overflow: auto;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.min-category {
+  align-items: flex-start;
+  padding: 3%;
+}
+
+.min-category h4 {
+  margin-bottom: 0;
+}
+
+.mat-list {
+  text-align: left;
+}
+
+.strike-txt {
+  text-decoration: line-through;
+  font-style: italic;
+  color: grey;
+}
+
+.material {
+  height: 25px;
+  align-items: center;
+}
+
+.controls-container {
+  align-items: center;
+}
+
+.controls {
+  color: black;
+  cursor: pointer;
+}
+
+.control-icon {
+  font-size: 18px;
+}
+
+.controls:focus {
+  color: black;
+}
+
+.controls:hover {
+  margin-top: -1px;
 }
