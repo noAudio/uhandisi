@@ -15,12 +15,12 @@ class MinorCategory {
       'Core Dynamic Composites': 20,
     };
     return DivElement()
-      ..className = 'min-category'
+      ..classes = ['min-category', 'flex-col']
       ..id = '${categoryName.replaceAll(" ", "-").toLowerCase()}-container'
       ..children.addAll([
         HeadingElement.h4()..text = categoryName,
         DivElement()
-          ..className = 'mat-list'
+          ..classes = ['mat-list', 'flex-col']
           ..children.addAll([
             for (MapEntry mat in mats.entries)
               matMaker(name: mat.key, number: mat.value)
@@ -32,7 +32,7 @@ class MinorCategory {
     String _name = name.replaceAll(' ', '').toLowerCase();
 
     return DivElement()
-      ..className = 'material'
+      ..classes = ['material', 'flex-row']
       ..id = '$_name-container'
       ..onMouseOver.listen((event) {
         var div = querySelector('#$_name-container') as DivElement;

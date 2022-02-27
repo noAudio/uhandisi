@@ -3,7 +3,7 @@ import 'dart:html';
 class MaterialControls {
   DivElement materialControls() {
     return DivElement()
-      ..className = 'controls-container'
+      ..classes = ['controls-container', 'flex-row']
       ..children = [
         // TODO: Add event listeners
         DivElement()

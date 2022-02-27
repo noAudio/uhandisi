@@ -4,13 +4,13 @@ import 'dart:html';
 class PreviousListView {
   DivElement previousListView({List<Element>? previousLists}) {
     return DivElement()
-      ..className = 'previous-list'
+      ..classes = ['previous-list', 'flex-col']
       ..children.addAll([
         HeadingElement.h4()
           ..text = 'Previous Lists'
           ..className = 'prev-title',
         DivElement()
-          ..className = 'lists-section'
+          ..classes = ['lists-section', 'flex-col']
           ..children.addAll(previousLists ??
               [
                 ParagraphElement()

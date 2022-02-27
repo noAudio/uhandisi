@@ -14,11 +14,20 @@ html, body {
   overflow: hidden;
 }
 
+/* Utility classes */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 /* Nav area */
 nav {
   width: 100vw;
-  display: flex;
-  flex-direction: row;
   text-align: center;
 }
 
@@ -46,8 +55,6 @@ nav a {
 }
 
 #root {
-  display: flex;
-  flex-direction: row;
   width: 99vw;
   height: 100vh;
   margin: 0;
@@ -75,20 +82,12 @@ nav a {
 }
 
 /* List generator styling */
-
-.list-generator {
-  display: flex;
-  flex-direction: row;
-}
-
 .instructions-section {
   padding: 0% 1%;
   width: 60%;
 }
 
 .link-section {
-  display: flex;
-  flex-direction: column;
   text-align: left;
   padding: 0% 1%;
   width: 40%;
@@ -128,16 +127,11 @@ nav a {
 
 /* Previous lists section */
 .previous-list {
-  display: flex;
-  flex-direction: column;
   padding: 3% 20%;
   height: 100%;
-  /* justify-content: center; */
 }
 
 .lists-section {
-  display: flex;
-  flex-direction: column;
   overflow: auto;
 }
 
@@ -163,17 +157,9 @@ nav a {
 
 /* User controls section */
 .user-controls {
-  display: flex;
-  flex-direction: column;
   padding: 0 20%;
   width: 100%;
   height: 100%;
-  /* justify-content: center; */
-}
-
-.save-section {
-  display: flex;
-  flex-direction: column;
 }
 
 .save-textbox {
@@ -229,8 +215,6 @@ nav a {
 }
 
 .min-category {
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
   padding: 3%;
 }
@@ -240,8 +224,6 @@ nav a {
 }
 
 .mat-list {
-  display: flex;
-  flex-direction: column;
   text-align: left;
 }
 
@@ -252,15 +234,11 @@ nav a {
 }
 
 .material {
-  display: flex;
-  flex-direction: row;
   height: 25px;
   align-items: center;
 }
 
 .controls-container {
-  display: flex;
-  flex-direction: row;
   align-items: center;
 }
 

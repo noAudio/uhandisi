@@ -5,10 +5,10 @@ class UserControls {
 
   DivElement userControls() {
     return DivElement()
-      ..className = 'user-controls'
+      ..classes = ['user-controls', 'flex-col']
       ..children = [
         DivElement()
-          ..className = 'save-section'
+          ..classes = ['save-section', 'flex-col']
           ..children.addAll([
             HeadingElement.h4()..text = 'Save list',
             InputElement()

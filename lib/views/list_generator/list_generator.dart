@@ -12,10 +12,10 @@ class ListGeneratorView {
 
   DivElement listGeneratorView() {
     return DivElement()
-      ..className = 'list-generator'
+      ..classes = ['list-generator', 'flex-row']
       ..children = [
         DivElement()
-          ..className = 'link-section'
+          ..classes = ['link-section', 'flex-col']
           ..children = [
             TabSwitcherView().tabSwitcherView(),
             isCoriolis
