@@ -1,19 +1,19 @@
 import 'dart:convert';
 
-class Material {
+class MaterialItem {
   String name;
   int amount;
 
-  Material({
+  MaterialItem({
     required this.name,
     required this.amount,
   });
 
-  Material copyWith({
+  MaterialItem copyWith({
     String? name,
     int? amount,
   }) {
-    return Material(
+    return MaterialItem(
       name: name ?? this.name,
       amount: amount ?? this.amount,
     );
@@ -26,8 +26,8 @@ class Material {
     };
   }
 
-  factory Material.fromMap(Map<String, dynamic> map) {
-    return Material(
+  factory MaterialItem.fromMap(Map<String, dynamic> map) {
+    return MaterialItem(
       name: map['name'] ?? '',
       amount: map['amount']?.toInt() ?? 0,
     );
@@ -35,8 +35,8 @@ class Material {
 
   String toJson() => json.encode(toMap());
 
-  factory Material.fromJson(String source) =>
-      Material.fromMap(json.decode(source));
+  factory MaterialItem.fromJson(String source) =>
+      MaterialItem.fromMap(json.decode(source));
 
   @override
   String toString() => '$name: $amount';
@@ -45,7 +45,9 @@ class Material {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Material && other.name == name && other.amount == amount;
+    return other is MaterialItem &&
+        other.name == name &&
+        other.amount == amount;
   }
 
   @override

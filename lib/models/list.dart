@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:intl/intl.dart';
 
-import 'package:uhandisi/models/material.dart';
+import 'package:uhandisi/models/material_item.dart';
 
 class MaterialList {
   String? title;
-  List<Material> list;
+  List<MaterialItem> list;
   DateTime date;
   MaterialList({
     this.title,
@@ -21,7 +21,7 @@ class MaterialList {
 
   MaterialList copyWith({
     String? title,
-    List<Material>? list,
+    List<MaterialItem>? list,
     DateTime? date,
   }) {
     return MaterialList(
@@ -42,7 +42,8 @@ class MaterialList {
   factory MaterialList.fromMap(Map<String, dynamic> map) {
     return MaterialList(
       title: map['title'],
-      list: List<Material>.from(map['list']?.map((x) => Material.fromMap(x))),
+      list: List<MaterialItem>.from(
+          map['list']?.map((x) => MaterialItem.fromMap(x))),
       date: DateTime.fromMillisecondsSinceEpoch(map['date']),
     );
   }
