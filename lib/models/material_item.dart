@@ -3,19 +3,31 @@ import 'dart:convert';
 class MaterialItem {
   String name;
   int amount;
+  int? grade;
+  String? kind;
+  String? section;
 
   MaterialItem({
     required this.name,
     required this.amount,
+    this.grade,
+    this.kind,
+    this.section,
   });
 
   MaterialItem copyWith({
     String? name,
     int? amount,
+    int? grade,
+    String? kind,
+    String? section,
   }) {
     return MaterialItem(
       name: name ?? this.name,
       amount: amount ?? this.amount,
+      grade: grade ?? this.grade,
+      kind: kind ?? this.kind,
+      section: section ?? this.section,
     );
   }
 
@@ -23,6 +35,9 @@ class MaterialItem {
     return {
       'name': name,
       'amount': amount,
+      'grade': grade,
+      'kind': kind,
+      'section': section,
     };
   }
 
@@ -30,6 +45,9 @@ class MaterialItem {
     return MaterialItem(
       name: map['name'] ?? '',
       amount: map['amount']?.toInt() ?? 0,
+      grade: map['grade']?.toInt(),
+      kind: map['kind'],
+      section: map['section'],
     );
   }
 
@@ -39,7 +57,9 @@ class MaterialItem {
       MaterialItem.fromMap(json.decode(source));
 
   @override
-  String toString() => '$name: $amount';
+  String toString() {
+    return 'MaterialItem(name: $name, amount: $amount, grade: $grade, kind: $kind, section: $section)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -47,9 +67,18 @@ class MaterialItem {
 
     return other is MaterialItem &&
         other.name == name &&
-        other.amount == amount;
+        other.amount == amount &&
+        other.grade == grade &&
+        other.kind == kind &&
+        other.section == section;
   }
 
   @override
-  int get hashCode => name.hashCode ^ amount.hashCode;
+  int get hashCode {
+    return name.hashCode ^
+        amount.hashCode ^
+        grade.hashCode ^
+        kind.hashCode ^
+        section.hashCode;
+  }
 }
