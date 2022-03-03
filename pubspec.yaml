@@ -1,6 +1,7 @@
 name: uhandisi
 description: An Elite:\ Dangerous companion tool that aids in engineering.
 version: 0.0.1
+publish_to: 'none'
 # homepage: https://www.example.com
 
 environment:
@@ -8,10 +9,18 @@ environment:
 
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.4
   build_runner: ^2.1.4
   build_web_compilers: ^3.2.1
   lints: ^1.0.0
 
 dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.4
   intl: ^0.17.0
-  wupper: ^3.4.0
+
+flutter:
+  uses-material-design: true
