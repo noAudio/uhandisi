@@ -1,7 +1,7 @@
 /// Material data scraped from Inara. The data is
 /// formatted into `name`, `grade`, `section` and `kind`
 /// properties.
-final String unprocessed = '''
+const String unprocessed = '''
     [
         {
             "name": "Aberrant Shield Pattern Analysis",
