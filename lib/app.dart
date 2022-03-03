@@ -4,9 +4,9 @@ import 'package:uhandisi/views/previous_list/previous_list.dart';
 import 'package:uhandisi/views/sorted_materials/sorted_materials.dart';
 import 'package:uhandisi/views/user_controls/user_controls.dart';
 
-class App {
+class TApp {
   var root = querySelector('#root') as DivElement;
-  App() {
+  TApp() {
     run();
   }
 
