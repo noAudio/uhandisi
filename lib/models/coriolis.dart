@@ -46,9 +46,3 @@ class Coriolis {
   @override
   int get hashCode => link.hashCode;
 }
-
-void main() {
-  var cori = Coriolis(link: 'http://www.coriolis.io/sASDsfaDfg');
-  print(cori.link);
-  print(cori.toUri());
-}
