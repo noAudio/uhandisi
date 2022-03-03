@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:uhandisi/views/sorted_materials/components/major_category.dart';
+import 'package:uhandisi/views/legacy/sorted_materials/components/major_category.dart';
 
 class SortedMaterials {
   bool isEmpty = true;

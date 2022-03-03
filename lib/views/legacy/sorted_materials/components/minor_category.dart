@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:uhandisi/views/sorted_materials/components/material_controls.dart';
+import 'package:uhandisi/views/legacy/sorted_materials/components/material_controls.dart';
 
 class MinorCategory {
   DivElement minorCategory({

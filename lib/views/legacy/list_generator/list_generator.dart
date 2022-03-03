@@ -1,8 +1,8 @@
 import 'dart:html';
 
-import 'package:uhandisi/views/list_generator/components/instructions.dart';
-import 'package:uhandisi/views/list_generator/components/tab_switcher.dart';
-import 'package:uhandisi/views/list_generator/components/text_boxes.dart';
+import 'package:uhandisi/views/legacy/list_generator/components/instructions.dart';
+import 'package:uhandisi/views/legacy/list_generator/components/tab_switcher.dart';
+import 'package:uhandisi/views/legacy/list_generator/components/text_boxes.dart';
 
 class ListGeneratorView {
   final appInstructions = '''
