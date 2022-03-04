@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uhandisi/views/home.dart';
+import 'package:uhandisi/screens/home.dart';
 
 void main() {
   runApp(const App());

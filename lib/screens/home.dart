@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uhandisi/views/nav/nav_area.dart';
+import 'package:uhandisi/widgets/nav/nav_area.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
