@@ -36,6 +36,7 @@ class TabButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      // TODO: Handle button click
       onTap: () => print('Clicked $buttonValue'),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
