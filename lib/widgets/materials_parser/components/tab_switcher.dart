@@ -9,7 +9,6 @@ class TabSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TabButton(
           isCoriolis: isCoriolis,
