@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uhandisi/widgets/materials_parser/components/submit_button.dart';
 import 'package:uhandisi/widgets/materials_parser/components/tab_switcher.dart';
 import 'package:uhandisi/widgets/materials_parser/components/text_boxes.dart';
 
@@ -21,7 +22,10 @@ class MaterialsParser extends StatelessWidget {
           child: Column(
             children: [
               TabSwitcher(isCoriolis: isCoriolis),
+              const SizedBox(height: 5),
               TextBoxes(isCoriolis: isCoriolis),
+              const SizedBox(height: 5),
+              const SubmitButton(),
             ],
           ),
         ),
