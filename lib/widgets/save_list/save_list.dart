@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SaveList extends StatelessWidget {
   const SaveList({
@@ -7,6 +8,43 @@ class SaveList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.all(100.0),
+      child: SizedBox(
+        width: 170,
+        child: Column(
+          children: [
+            Text(
+              'Save',
+              style: GoogleFonts.poppins(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                TextField(
+                  style: GoogleFonts.poppins(),
+                  decoration: const InputDecoration(
+                    hintText: 'Name your list',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('Save list'),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
