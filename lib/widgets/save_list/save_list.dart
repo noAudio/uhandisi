@@ -24,6 +24,7 @@ class SaveList extends StatelessWidget {
               ),
             ),
             const SaveForm(),
+            const SizedBox(height: 10),
             const ResetButton()
           ],
         ),
