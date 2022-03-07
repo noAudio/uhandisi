@@ -15,8 +15,10 @@ class PreviousLists extends StatelessWidget {
         children: [
           Text(
             'Previous Lists',
-            style:
-                GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.bold),
+            style: GoogleFonts.poppins(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
