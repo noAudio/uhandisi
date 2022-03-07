@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uhandisi/widgets/save_list/components/reset_button.dart';
+import 'package:uhandisi/widgets/save_list/components/save_form.dart';
 
 class SaveList extends StatelessWidget {
   const SaveList({
@@ -22,27 +23,7 @@ class SaveList extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                TextField(
-                  style: GoogleFonts.poppins(),
-                  decoration: const InputDecoration(
-                    hintText: 'Name your list',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('Save list'),
-                  ),
-                ),
-              ],
-            ),
+            const SaveForm(),
             const ResetButton()
           ],
         ),
