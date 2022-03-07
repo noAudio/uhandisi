@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uhandisi/widgets/materials_parser/materials_parser.dart';
 import 'package:uhandisi/widgets/nav/nav_area.dart';
 import 'package:uhandisi/widgets/previous_lists/previous_lists.dart';
+import 'package:uhandisi/widgets/save_list/save_list.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -27,17 +28,6 @@ class Home extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class SaveList extends StatelessWidget {
-  const SaveList({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
 
