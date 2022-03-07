@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uhandisi/widgets/save_list/components/reset_button.dart';
 
 class SaveList extends StatelessWidget {
   const SaveList({
@@ -42,6 +43,7 @@ class SaveList extends StatelessWidget {
                 ),
               ],
             ),
+            const ResetButton()
           ],
         ),
       ),
