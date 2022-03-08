@@ -1,6 +1,6 @@
 import 'components/minor_category.dart';
 
-final manList = const <ProcessedMaterialItem>[
+const manList = <ProcessedMaterialItem>[
   ProcessedMaterialItem(materialText: 'Galvanised Alloys: 40'),
   ProcessedMaterialItem(materialText: 'Grid Resistors: 21'),
   ProcessedMaterialItem(materialText: 'Focus Crystals: 12'),
@@ -14,7 +14,8 @@ final manList = const <ProcessedMaterialItem>[
   ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
   ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
 ];
-final encList = const <ProcessedMaterialItem>[
+
+const encList = <ProcessedMaterialItem>[
   ProcessedMaterialItem(materialText: 'Modified Embedded Firmware: 91'),
   ProcessedMaterialItem(materialText: 'Datamined Wake Exceptions: 91'),
   ProcessedMaterialItem(materialText: 'Untypical Shield Scans: 91'),
@@ -28,7 +29,8 @@ final encList = const <ProcessedMaterialItem>[
   ProcessedMaterialItem(materialText: 'Cracked Industrial Firmware: 91'),
   ProcessedMaterialItem(materialText: 'Cracked Industrial Firmware: 91'),
 ];
-final rawList = const <ProcessedMaterialItem>[
+
+const rawList = <ProcessedMaterialItem>[
   ProcessedMaterialItem(materialText: 'Tin: 34'),
   ProcessedMaterialItem(materialText: 'Selenium: 34'),
   ProcessedMaterialItem(materialText: 'Vanadium: 34'),
