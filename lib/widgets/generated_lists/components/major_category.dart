@@ -26,7 +26,7 @@ class MajorCategory extends StatelessWidget {
           ),
           Expanded(
             child: GridView.count(
-              crossAxisCount: 2,
+              crossAxisCount: 1,
               mainAxisSpacing: 5,
               crossAxisSpacing: 5,
               scrollDirection: Axis.vertical,
