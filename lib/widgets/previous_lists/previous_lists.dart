@@ -11,26 +11,29 @@ class PreviousLists extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(50.0),
-      child: Column(
-        children: [
-          Text(
-            'Previous Lists',
-            style: GoogleFonts.poppins(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
+      child: SizedBox(
+        width: 120,
+        child: Column(
+          children: [
+            Text(
+              'Previous Lists',
+              style: GoogleFonts.poppins(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: const [
-                PreviousListItem(
-                  title: 'Krait MkII Explorer',
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: const [
+                  PreviousListItem(
+                    title: 'Krait MkII Explorer',
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
