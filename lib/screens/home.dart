@@ -16,14 +16,16 @@ class Home extends StatelessWidget {
         children: [
           const NavArea(),
           const MaterialsParser(isCoriolis: false),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              SaveList(),
-              GeneratedLists(),
-              PreviousLists(),
-            ],
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                SaveList(),
+                GeneratedLists(),
+                PreviousLists(),
+              ],
+            ),
           ),
         ],
       ),
