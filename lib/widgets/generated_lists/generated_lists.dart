@@ -55,12 +55,12 @@ class GeneratedLists extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 1150,
+      width: 1200,
       height: 700,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 30.0, 8.0, 8.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: isMaterials
               ? [
