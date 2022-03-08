@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uhandisi/widgets/generated_lists/components/major_category.dart';
+import 'package:uhandisi/widgets/generated_lists/mock_data.dart';
 
 class GeneratedLists extends StatelessWidget {
   const GeneratedLists({
@@ -8,49 +9,6 @@ class GeneratedLists extends StatelessWidget {
 
   // TODO: Watch list of materials through state.
   final bool isMaterials = true;
-
-  final manList = const <Widget>[
-    Text('Galvanised Alloys'),
-    Text('Grid Resistors'),
-    Text('Focus Crystals'),
-    Text('Core Dynamic Composites'),
-    Text('Pharmaceutical Isolators'),
-    Text('Pharmaceutical Isolators'),
-    Text('Pharmaceutical Isolators'),
-    Text('Pharmaceutical Isolators'),
-    Text('Pharmaceutical Isolators'),
-    Text('Pharmaceutical Isolators'),
-    Text('Pharmaceutical Isolators'),
-    Text('Pharmaceutical Isolators'),
-  ];
-  final encList = const <Widget>[
-    Text('Modified Embedded Firmware'),
-    Text('Datamined Wake Exceptions'),
-    Text('Untypical Shield Scans'),
-    Text('Disrupted Wake Echoes'),
-    Text('Cracked Industrial Firmware'),
-    Text('Cracked Industrial Firmware'),
-    Text('Cracked Industrial Firmware'),
-    Text('Cracked Industrial Firmware'),
-    Text('Cracked Industrial Firmware'),
-    Text('Cracked Industrial Firmware'),
-    Text('Cracked Industrial Firmware'),
-    Text('Cracked Industrial Firmware'),
-  ];
-  final rawList = const <Widget>[
-    Text('Tin'),
-    Text('Selenium'),
-    Text('Vanadium'),
-    Text('Polonium'),
-    Text('Iron'),
-    Text('Iron'),
-    Text('Iron'),
-    Text('Iron'),
-    Text('Iron'),
-    Text('Iron'),
-    Text('Iron'),
-    Text('Iron'),
-  ];
 
   @override
   Widget build(BuildContext context) {
