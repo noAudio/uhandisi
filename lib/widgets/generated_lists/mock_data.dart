@@ -1,4 +1,4 @@
-import 'components/minor_category.dart';
+import 'package:uhandisi/widgets/generated_lists/components/processed_material.dart';
 
 const manList = <ProcessedMaterialItem>[
   ProcessedMaterialItem(materialText: 'Galvanised Alloys: 40'),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uhandisi/widgets/generated_lists/components/minor_category.dart';
+import 'package:uhandisi/widgets/generated_lists/components/processed_material.dart';
 
 class MajorCategory extends StatelessWidget {
   const MajorCategory({
