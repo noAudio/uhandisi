@@ -27,7 +27,8 @@ const encList = <ProcessedMaterialItem>[
   ProcessedMaterialItem(materialText: 'Cracked Industrial Firmware: 91'),
   ProcessedMaterialItem(materialText: 'Cracked Industrial Firmware: 91'),
   ProcessedMaterialItem(materialText: 'Cracked Industrial Firmware: 91'),
-  ProcessedMaterialItem(materialText: 'Cracked Industrial Firmware: 91'),
+  ProcessedMaterialItem(
+      materialText: 'Exceptional Scrambled Emission Data: 910'),
 ];
 
 const rawList = <ProcessedMaterialItem>[
