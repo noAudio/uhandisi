@@ -34,8 +34,9 @@ class MajorCategory extends StatelessWidget {
               primary: false,
               children: [
                 MinorCategory(
-                    minorCategoryTitle: 'Capacitors',
-                    processedMaterialItems: minorCategories)
+                  minorCategoryTitle: 'Capacitors',
+                  processedMaterialItems: minorCategories,
+                )
               ],
             ),
           ),
