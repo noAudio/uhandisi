@@ -26,8 +26,10 @@ class MinorCategory extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-          Column(
-            children: processedMaterialItems,
+          Expanded(
+            child: Column(
+              children: processedMaterialItems,
+            ),
           ),
         ],
       ),
@@ -35,23 +37,43 @@ class MinorCategory extends StatelessWidget {
   }
 }
 
-class ProcessedMaterialItem extends StatelessWidget {
+class ProcessedMaterialItem extends StatefulWidget {
   const ProcessedMaterialItem({
     Key? key,
     required this.materialText,
   }) : super(key: key);
 
   final String materialText;
-  final bool isHovered = false;
+
+  @override
+  State<ProcessedMaterialItem> createState() => _ProcessedMaterialItemState();
+}
+
+class _ProcessedMaterialItemState extends State<ProcessedMaterialItem> {
+  bool isHovered = false;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Checkbox(value: false, onChanged: (value) {}),
-        Text(materialText, style: GoogleFonts.poppins(fontSize: 16)),
-        // isHovered ? const MaterialItemHoverControls() : const SizedBox(),
-      ],
+    return Expanded(
+      child: MouseRegion(
+        onEnter: (event) {
+          setState(() {
+            isHovered = true;
+          });
+        },
+        onExit: (event) {
+          setState(() {
+            isHovered = false;
+          });
+        },
+        child: Row(
+          children: [
+            Checkbox(value: false, onChanged: (value) {}),
+            Text(widget.materialText, style: GoogleFonts.poppins(fontSize: 16)),
+            !isHovered ? const MaterialItemHoverControls() : const SizedBox(),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -63,30 +85,56 @@ class MaterialItemHoverControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        InkWell(
-          onTap: () {},
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.remove),
+    return Expanded(
+      child: Row(
+        children: const [
+          HoverControlButton(
+            tooltipMessage: 'Reduce amount.',
+            iconType: Icons.remove,
+          ),
+          HoverControlButton(
+            tooltipMessage: 'Increase amount.',
+            iconType: Icons.add,
+          ),
+          HoverControlButton(
+            tooltipMessage: 'Remove from list.',
+            iconType: Icons.delete,
+            color: Colors.red,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class HoverControlButton extends StatelessWidget {
+  const HoverControlButton({
+    Key? key,
+    required this.tooltipMessage,
+    required this.iconType,
+    this.color,
+  }) : super(key: key);
+
+  final String tooltipMessage;
+  final IconData iconType;
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltipMessage,
+      preferBelow: false,
+      child: InkWell(
+        onTap: () {},
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            iconType,
+            size: 10,
+            color: color ?? Colors.black,
           ),
         ),
-        InkWell(
-          onTap: () {},
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.add),
-          ),
-        ),
-        InkWell(
-          onTap: () {},
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.delete, color: Colors.red),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
