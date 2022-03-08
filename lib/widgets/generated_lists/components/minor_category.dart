@@ -26,10 +26,8 @@ class MinorCategory extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-          ListView(
-            children: const [
-              ProcessedMaterialItem(materialText: 'materialText'),
-            ],
+          Column(
+            children: processedMaterialItems,
           ),
         ],
       ),
@@ -52,7 +50,7 @@ class ProcessedMaterialItem extends StatelessWidget {
       children: [
         Checkbox(value: false, onChanged: (value) {}),
         Text(materialText, style: GoogleFonts.poppins(fontSize: 16)),
-        isHovered ? const MaterialItemHoverControls() : const SizedBox(),
+        // isHovered ? const MaterialItemHoverControls() : const SizedBox(),
       ],
     );
   }
