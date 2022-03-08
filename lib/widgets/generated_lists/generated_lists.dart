@@ -13,7 +13,7 @@ class GeneratedLists extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 1200,
+      width: 1400,
       height: 700,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 30.0, 8.0, 8.0),
@@ -21,7 +21,7 @@ class GeneratedLists extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: isMaterials
-              ? [
+              ? const [
                   MajorCategory(
                       majorCategoryTitle: 'Manufactured Materials',
                       minorCategories: manList),
