@@ -11,9 +11,9 @@ class SaveList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(100.0),
+      padding: const EdgeInsets.all(50.0),
       child: SizedBox(
-        width: 170,
+        width: 120,
         child: Column(
           children: [
             Text(

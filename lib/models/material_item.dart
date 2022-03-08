@@ -52,6 +52,7 @@ class MaterialItem {
   }
 
   String toJson() => json.encode(toMap());
+  String materialText() => '$name: $amount';
 
   factory MaterialItem.fromJson(String source) =>
       MaterialItem.fromMap(json.decode(source));
