@@ -52,33 +52,42 @@ class ProcessedMaterialItem extends StatelessWidget {
       children: [
         Checkbox(value: false, onChanged: (value) {}),
         Text(materialText, style: GoogleFonts.poppins(fontSize: 16)),
-        isHovered
-            ? Row(
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.remove),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.add),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.delete, color: Colors.red),
-                    ),
-                  ),
-                ],
-              )
-            : const SizedBox(),
+        isHovered ? const MaterialItemHoverControls() : const SizedBox(),
+      ],
+    );
+  }
+}
+
+class MaterialItemHoverControls extends StatelessWidget {
+  const MaterialItemHoverControls({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        InkWell(
+          onTap: () {},
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(Icons.remove),
+          ),
+        ),
+        InkWell(
+          onTap: () {},
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(Icons.add),
+          ),
+        ),
+        InkWell(
+          onTap: () {},
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(Icons.delete, color: Colors.red),
+          ),
+        ),
       ],
     );
   }
