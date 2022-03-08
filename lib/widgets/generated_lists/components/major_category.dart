@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uhandisi/widgets/generated_lists/components/minor_category.dart';
 
 class MajorCategory extends StatelessWidget {
   const MajorCategory({
@@ -9,7 +10,7 @@ class MajorCategory extends StatelessWidget {
   }) : super(key: key);
 
   final String majorCategoryTitle;
-  final List<Widget> minorCategories;
+  final List<ProcessedMaterialItem> minorCategories;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,11 @@ class MajorCategory extends StatelessWidget {
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               primary: false,
-              children: minorCategories,
+              children: [
+                MinorCategory(
+                    minorCategoryTitle: 'Capacitors',
+                    processedMaterialItems: minorCategories)
+              ],
             ),
           ),
         ],
