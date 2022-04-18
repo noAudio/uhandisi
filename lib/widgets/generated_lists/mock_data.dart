@@ -1,18 +1,18 @@
 import 'package:uhandisi/widgets/generated_lists/components/processed_material.dart';
 
 const manList = <ProcessedMaterialItem>[
-  ProcessedMaterialItem(materialText: 'Galvanised Alloys: 40'),
-  ProcessedMaterialItem(materialText: 'Grid Resistors: 21'),
-  ProcessedMaterialItem(materialText: 'Focus Crystals: 12'),
-  ProcessedMaterialItem(materialText: 'Core Dynamic Composites: 12'),
-  ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
-  ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
-  ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
-  ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
-  ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
-  ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
-  ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
-  ProcessedMaterialItem(materialText: 'Pharmaceutical Isolators: 12'),
+  ProcessedMaterialItem(materialText: '40 Galvanised Alloys'),
+  ProcessedMaterialItem(materialText: '21 Grid Resistors'),
+  ProcessedMaterialItem(materialText: '12 Focus Crystals'),
+  ProcessedMaterialItem(materialText: '12 Core Dynamic Composites'),
+  ProcessedMaterialItem(materialText: '12 Pharmaceutical Isolators'),
+  ProcessedMaterialItem(materialText: '12 Pharmaceutical Isolators'),
+  ProcessedMaterialItem(materialText: '12 Pharmaceutical Isolators'),
+  ProcessedMaterialItem(materialText: '12 Pharmaceutical Isolators'),
+  ProcessedMaterialItem(materialText: '12 Pharmaceutical Isolators'),
+  ProcessedMaterialItem(materialText: '12 Pharmaceutical Isolators'),
+  ProcessedMaterialItem(materialText: '12 Pharmaceutical Isolators'),
+  ProcessedMaterialItem(materialText: '12 Pharmaceutical Isolators'),
 ];
 
 const encList = <ProcessedMaterialItem>[
