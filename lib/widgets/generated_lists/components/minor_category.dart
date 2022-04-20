@@ -27,10 +27,8 @@ class MinorCategory extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-          Expanded(
-            child: Column(
-              children: processedMaterialItems,
-            ),
+          Column(
+            children: processedMaterialItems,
           ),
         ],
       ),
