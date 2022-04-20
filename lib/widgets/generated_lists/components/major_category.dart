@@ -15,6 +15,21 @@ class MajorCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<MinorCategory> minCategories = [
+      MinorCategory(
+        minorCategoryTitle: '1 Capacitors',
+        processedMaterialItems: minorCategories,
+      ),
+      MinorCategory(
+        minorCategoryTitle: '2 Capacitors',
+        processedMaterialItems: minorCategories,
+      ),
+      MinorCategory(
+        minorCategoryTitle: '3 Capacitors',
+        processedMaterialItems: minorCategories,
+      ),
+    ];
+
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,27 +41,12 @@ class MajorCategory extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: GridView.count(
-              crossAxisCount: 1,
-              mainAxisSpacing: 5,
-              crossAxisSpacing: 5,
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              primary: false,
-              children: [
-                MinorCategory(
-                  minorCategoryTitle: '1 Capacitors',
-                  processedMaterialItems: minorCategories,
-                ),
-                MinorCategory(
-                  minorCategoryTitle: '2 Capacitors',
-                  processedMaterialItems: minorCategories,
-                ),
-                MinorCategory(
-                  minorCategoryTitle: '3 Capacitors',
-                  processedMaterialItems: minorCategories,
-                ),
-              ],
+            child: ListView.builder(
+              controller: ScrollController(),
+              itemCount: minCategories.length,
+              itemBuilder: (context, index) {
+                return minCategories[index];
+              },
             ),
           ),
         ],
