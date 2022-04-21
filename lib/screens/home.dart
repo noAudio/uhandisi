@@ -19,23 +19,32 @@ class Home extends StatelessWidget {
           // const MaterialsParser(isCoriolis: false),
           Expanded(
             child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) {
-              if (constraints.maxWidth <= FormFactor.mobile) {
-                return const GeneratedLists();
-              } else if (constraints.maxWidth <= FormFactor.tablet) {
-                return const Text('Tablet');
-              } else {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    SaveList(),
-                    GeneratedLists(),
-                    PreviousLists(),
-                  ],
-                );
-              }
-            }),
+              builder: (BuildContext context, BoxConstraints constraints) {
+                if (constraints.maxWidth <= FormFactor.mobile) {
+                  return const GeneratedLists();
+                } else if (constraints.maxWidth <= FormFactor.laptop) {
+                  return const GeneratedLists();
+                } else if (constraints.maxWidth <= FormFactor.desktop) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      GeneratedLists(),
+                    ],
+                  );
+                } else {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      SaveList(),
+                      GeneratedLists(),
+                      PreviousLists(),
+                    ],
+                  );
+                }
+              },
+            ),
           ),
         ],
       ),
