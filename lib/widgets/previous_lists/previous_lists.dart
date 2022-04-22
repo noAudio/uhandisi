@@ -5,15 +5,20 @@ import 'package:uhandisi/widgets/previous_lists/components/previous_list_item.da
 class PreviousLists extends StatelessWidget {
   const PreviousLists({
     Key? key,
+    required this.isMobile,
   }) : super(key: key);
 
+  final bool isMobile;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(50.0),
+      padding:
+          isMobile ? const EdgeInsets.all(5.0) : const EdgeInsets.all(50.0),
       child: SizedBox(
-        width: 120,
+        width: isMobile ? 300 : 120,
         child: Column(
+          crossAxisAlignment:
+              isMobile ? CrossAxisAlignment.start : CrossAxisAlignment.center,
           children: [
             Text(
               'Previous Lists',
