@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:uhandisi/utils.dart';
 import 'package:uhandisi/widgets/generated_lists/generated_lists.dart';
 import 'package:uhandisi/widgets/materials_parser/materials_parser.dart';
@@ -22,14 +21,26 @@ class Home extends StatelessWidget {
               ),
               backgroundColor: Colors.white,
             ),
-            bottomNavigationBar: BottomNavigationBar(items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.saved_search), label: 'One'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.saved_search), label: 'One'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.saved_search), label: 'One'),
-            ]),
+            floatingActionButton: FloatingActionButton.small(
+              onPressed: () {},
+              child: const Icon(Icons.save),
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.check_box),
+                  label: 'Generated list',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.star),
+                  label: 'Saved lists',
+                ),
+              ],
+            ),
             backgroundColor: Colors.white,
             body: Column(
               children: const [
