@@ -14,42 +14,7 @@ class Home extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth <= FormFactor.mobile) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const NavArea(
-                isMobile: true,
-              ),
-              backgroundColor: Colors.white,
-            ),
-            floatingActionButton: FloatingActionButton.small(
-              onPressed: () {},
-              child: const Icon(Icons.save),
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.check_box),
-                  label: 'Generated list',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.star),
-                  label: 'Saved lists',
-                ),
-              ],
-            ),
-            backgroundColor: Colors.white,
-            body: Column(
-              children: const [
-                Expanded(
-                  child: GeneratedLists(),
-                ),
-              ],
-            ),
-          );
+          return const MobileUI();
         } else if (constraints.maxWidth <= FormFactor.laptop) {
           return Scaffold(
             backgroundColor: Colors.white,
@@ -86,6 +51,57 @@ class Home extends StatelessWidget {
           );
         }
       },
+    );
+  }
+}
+
+class MobileUI extends StatefulWidget {
+  const MobileUI({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<MobileUI> createState() => _MobileUIState();
+}
+
+class _MobileUIState extends State<MobileUI> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const NavArea(
+          isMobile: true,
+        ),
+        backgroundColor: Colors.white,
+      ),
+      floatingActionButton: FloatingActionButton.small(
+        onPressed: () {},
+        child: const Icon(Icons.save),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.check_box),
+            label: 'Generated list',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Saved lists',
+          ),
+        ],
+      ),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: const [
+          Expanded(
+            child: GeneratedLists(),
+          ),
+        ],
+      ),
     );
   }
 }
