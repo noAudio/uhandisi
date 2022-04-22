@@ -34,7 +34,10 @@ class Home extends StatelessWidget {
                 const NavArea(
                   isMobile: false,
                 ),
-                const MaterialsParser(isCoriolis: false),
+                const MaterialsParser(
+                  isMobile: false,
+                  isCoriolis: false,
+                ),
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +45,9 @@ class Home extends StatelessWidget {
                     children: const [
                       SaveList(),
                       GeneratedLists(),
-                      PreviousLists(),
+                      PreviousLists(
+                        isMobile: false,
+                      ),
                     ],
                   ),
                 ),
@@ -65,6 +70,31 @@ class MobileUI extends StatefulWidget {
 }
 
 class _MobileUIState extends State<MobileUI> {
+  static int _selectedIndex = 0;
+
+  final List<Widget> _widgetOptions = [
+    const MaterialsParser(
+      isMobile: true,
+      isCoriolis: false,
+    ),
+    Column(
+      children: const [
+        Expanded(
+          child: GeneratedLists(),
+        ),
+      ],
+    ),
+    const PreviousLists(
+      isMobile: true,
+    ),
+  ];
+
+  void onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +105,7 @@ class _MobileUIState extends State<MobileUI> {
         backgroundColor: Colors.white,
       ),
       floatingActionButton: FloatingActionButton.small(
+        // TODO: Handle saving logic
         onPressed: () {},
         child: const Icon(Icons.save),
       ),
@@ -93,15 +124,11 @@ class _MobileUIState extends State<MobileUI> {
             label: 'Saved lists',
           ),
         ],
+        currentIndex: _selectedIndex,
+        onTap: onItemTapped,
       ),
       backgroundColor: Colors.white,
-      body: Column(
-        children: const [
-          Expanded(
-            child: GeneratedLists(),
-          ),
-        ],
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
     );
   }
 }
