@@ -22,7 +22,7 @@ class NavArea extends StatelessWidget {
             linearGradient: linearGradient,
             isMobile: isMobile,
           ),
-          const SizedBox(),
+          !isMobile ? const SizedBox() : const Text('.'),
         ],
       ),
     );
