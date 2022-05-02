@@ -7,10 +7,7 @@ import 'package:uhandisi/widgets/previous_lists/previous_lists.dart';
 class MobileUI extends StatefulWidget {
   const MobileUI({
     Key? key,
-    required this.isMobile,
   }) : super(key: key);
-
-  final bool isMobile;
 
   @override
   State<MobileUI> createState() => _MobileUIState();
