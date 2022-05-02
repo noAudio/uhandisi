@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uhandisi/utils.dart';
 import 'package:uhandisi/widgets/materials_parser/components/instructions_panel.dart';
 import 'package:uhandisi/widgets/materials_parser/components/submit_button.dart';
 import 'package:uhandisi/widgets/materials_parser/components/tab_switcher.dart';
@@ -18,44 +19,75 @@ class MaterialsParser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isMobile
-        ? Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: isMobile ? 250 : 320,
-                ),
-                SizedBox(
-                  width: isMobile ? 250 : 350,
-                  child: Column(
-                    children: [
-                      TabSwitcher(
-                        isCoriolis: isCoriolis,
-                        isMobile: isMobile,
-                      ),
-                      const SizedBox(height: 5),
-                      TextBoxes(isCoriolis: isCoriolis),
-                      const SizedBox(height: 5),
-                      const SubmitButton(),
-                    ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth <= FormFactor.mobile) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(),
+                  SizedBox(
+                    child: Column(
+                      children: [
+                        TabSwitcher(
+                          isCoriolis: isCoriolis,
+                          isMobile: isMobile,
+                        ),
+                        const SizedBox(height: 5),
+                        TextBoxes(isCoriolis: isCoriolis),
+                        const SizedBox(height: 5),
+                        const SubmitButton(),
+                      ],
+                    ),
                   ),
-                ),
-                InstructionsPanel(
-                  isMobile: isMobile,
-                  instructionsText: appInstructions,
-                ),
-              ],
+                  InstructionsPanel(
+                    isMobile: isMobile,
+                    instructionsText: appInstructions,
+                  ),
+                ],
+              ),
             ),
-          )
-        : Row(
+          );
+        } else if (constraints.maxWidth <= FormFactor.tablet) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(),
+                  SizedBox(
+                    child: Column(
+                      children: [
+                        TabSwitcher(
+                          isCoriolis: isCoriolis,
+                          isMobile: false,
+                        ),
+                        const SizedBox(height: 5),
+                        TextBoxes(isCoriolis: isCoriolis),
+                        const SizedBox(height: 5),
+                        const SubmitButton(),
+                      ],
+                    ),
+                  ),
+                  InstructionsPanel(
+                    isMobile: isMobile,
+                    instructionsText: appInstructions,
+                  ),
+                ],
+              ),
+            ),
+          );
+        } else {
+          return Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(width: 320),
               SizedBox(
-                width: isMobile ? 250 : 320,
-              ),
-              SizedBox(
-                width: isMobile ? 250 : 350,
+                width: 350,
                 child: Column(
                   children: [
                     TabSwitcher(
@@ -70,10 +102,70 @@ class MaterialsParser extends StatelessWidget {
                 ),
               ),
               InstructionsPanel(
-                isMobile: isMobile,
+                isMobile: false,
                 instructionsText: appInstructions,
               ),
             ],
           );
+        }
+      },
+    );
+    // return isMobile
+    //     ? Center(
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.start,
+    //           children: [
+    //             SizedBox(
+    //               width: isMobile ? 250 : 320,
+    //             ),
+    //             SizedBox(
+    //               width: isMobile ? 250 : 350,
+    //               child: Column(
+    //                 children: [
+    //                   TabSwitcher(
+    //                     isCoriolis: isCoriolis,
+    //                     isMobile: isMobile,
+    //                   ),
+    //                   const SizedBox(height: 5),
+    //                   TextBoxes(isCoriolis: isCoriolis),
+    //                   const SizedBox(height: 5),
+    //                   const SubmitButton(),
+    //                 ],
+    //               ),
+    //             ),
+    //             InstructionsPanel(
+    //               isMobile: isMobile,
+    //               instructionsText: appInstructions,
+    //             ),
+    //           ],
+    //         ),
+    //       )
+    //     : Row(
+    //         crossAxisAlignment: CrossAxisAlignment.start,
+    //         children: [
+    //           SizedBox(
+    //             width: isMobile ? 250 : 320,
+    //           ),
+    //           SizedBox(
+    //             width: isMobile ? 250 : 350,
+    //             child: Column(
+    //               children: [
+    //                 TabSwitcher(
+    //                   isCoriolis: isCoriolis,
+    //                   isMobile: isMobile,
+    //                 ),
+    //                 const SizedBox(height: 5),
+    //                 TextBoxes(isCoriolis: isCoriolis),
+    //                 const SizedBox(height: 5),
+    //                 const SubmitButton(),
+    //               ],
+    //             ),
+    //           ),
+    //           InstructionsPanel(
+    //             isMobile: isMobile,
+    //             instructionsText: appInstructions,
+    //           ),
+    //         ],
+    //       );
   }
 }

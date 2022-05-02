@@ -13,20 +13,35 @@ class TabSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        TabButton(
-          isCoriolis: isCoriolis,
-          buttonValue: 'Materials list',
-          isMobile: isMobile,
-        ),
-        TabButton(
-          isCoriolis: !isCoriolis,
-          buttonValue: 'Coriolis link',
-          isMobile: isMobile,
-        )
-      ],
-    );
+    return isMobile
+        ? Column(
+            children: [
+              TabButton(
+                isCoriolis: isCoriolis,
+                buttonValue: 'Materials list',
+                isMobile: isMobile,
+              ),
+              TabButton(
+                isCoriolis: !isCoriolis,
+                buttonValue: 'Coriolis link',
+                isMobile: isMobile,
+              )
+            ],
+          )
+        : Row(
+            children: [
+              TabButton(
+                isCoriolis: isCoriolis,
+                buttonValue: 'Materials list',
+                isMobile: isMobile,
+              ),
+              TabButton(
+                isCoriolis: !isCoriolis,
+                buttonValue: 'Coriolis link',
+                isMobile: isMobile,
+              )
+            ],
+          );
   }
 }
 

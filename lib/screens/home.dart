@@ -15,17 +15,16 @@ class Home extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth <= FormFactor.mobile) {
-          return const MobileUI();
+          return const MobileUI(
+            isMobile: true,
+          );
+        } else if (constraints.maxWidth <= FormFactor.tablet) {
+          return const MobileUI(
+            isMobile: true,
+          );
         } else if (constraints.maxWidth <= FormFactor.laptop) {
-          return Scaffold(
-            backgroundColor: Colors.white,
-            body: Column(
-              children: const [
-                Expanded(
-                  child: GeneratedLists(),
-                ),
-              ],
-            ),
+          return const MobileUI(
+            isMobile: false,
           );
         } else {
           return Scaffold(
@@ -46,9 +45,7 @@ class Home extends StatelessWidget {
                     children: const [
                       SaveList(),
                       GeneratedLists(),
-                      PreviousLists(
-                        isMobile: false,
-                      ),
+                      PreviousLists(isMobile: false),
                     ],
                   ),
                 ),

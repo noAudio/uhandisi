@@ -7,7 +7,10 @@ import 'package:uhandisi/widgets/previous_lists/previous_lists.dart';
 class MobileUI extends StatefulWidget {
   const MobileUI({
     Key? key,
+    required this.isMobile,
   }) : super(key: key);
+
+  final bool isMobile;
 
   @override
   State<MobileUI> createState() => _MobileUIState();
@@ -15,6 +18,7 @@ class MobileUI extends StatefulWidget {
 
 class _MobileUIState extends State<MobileUI> {
   static int _selectedIndex = 0;
+  bool isFAB = false;
 
   final List<Widget> _widgetOptions = [
     const MaterialsParser(
@@ -36,6 +40,7 @@ class _MobileUIState extends State<MobileUI> {
   void onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      isFAB = index == 1;
     });
   }
 
@@ -48,11 +53,13 @@ class _MobileUIState extends State<MobileUI> {
         ),
         backgroundColor: Colors.white,
       ),
-      floatingActionButton: FloatingActionButton.small(
-        // TODO: Handle saving logic
-        onPressed: () {},
-        child: const Icon(Icons.save),
-      ),
+      floatingActionButton: isFAB
+          ? FloatingActionButton.small(
+              // TODO: Handle saving logic
+              onPressed: () {},
+              child: const Icon(Icons.save),
+            )
+          : null,
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
