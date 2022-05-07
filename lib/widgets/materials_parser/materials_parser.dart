@@ -44,7 +44,6 @@ class MaterialsParser extends StatelessWidget {
                     ),
                   ),
                   InstructionsPanel(
-                    isMobile: isMobile,
                     instructionsText: appInstructions,
                   ),
                 ],
@@ -74,7 +73,6 @@ class MaterialsParser extends StatelessWidget {
                     ),
                   ),
                   InstructionsPanel(
-                    isMobile: isMobile,
                     instructionsText: appInstructions,
                   ),
                 ],
@@ -102,7 +100,6 @@ class MaterialsParser extends StatelessWidget {
                 ),
               ),
               InstructionsPanel(
-                isMobile: false,
                 instructionsText: appInstructions,
               ),
             ],

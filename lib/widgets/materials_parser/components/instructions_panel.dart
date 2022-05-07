@@ -5,11 +5,9 @@ import 'package:uhandisi/utils.dart';
 class InstructionsPanel extends StatelessWidget {
   const InstructionsPanel({
     Key? key,
-    required this.isMobile,
     required this.instructionsText,
   }) : super(key: key);
 
-  final bool isMobile;
   final String instructionsText;
 
   @override
