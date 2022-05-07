@@ -7,10 +7,12 @@ import 'package:uhandisi/widgets/previous_lists/previous_lists.dart';
 class MobileUI extends StatefulWidget {
   const MobileUI({
     Key? key,
+    required this.formFactor,
   }) : super(key: key);
 
   @override
   State<MobileUI> createState() => _MobileUIState();
+  final double formFactor;
 }
 
 class _MobileUIState extends State<MobileUI> {

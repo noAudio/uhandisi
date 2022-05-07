@@ -51,7 +51,7 @@ class MaterialsParser extends StatelessWidget {
               ),
             ),
           );
-        } else if (constraints.maxWidth <= FormFactor.tablet) {
+        } else if (constraints.maxWidth <= FormFactor.laptop) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(

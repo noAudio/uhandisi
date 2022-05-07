@@ -15,11 +15,17 @@ class Home extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth <= FormFactor.mobile) {
-          return const MobileUI();
+          return MobileUI(
+            formFactor: FormFactor.mobile,
+          );
         } else if (constraints.maxWidth <= FormFactor.tablet) {
-          return const MobileUI();
+          return MobileUI(
+            formFactor: FormFactor.tablet,
+          );
         } else if (constraints.maxWidth <= FormFactor.laptop) {
-          return const MobileUI();
+          return MobileUI(
+            formFactor: FormFactor.laptop,
+          );
         } else {
           return Scaffold(
             backgroundColor: Colors.white,
