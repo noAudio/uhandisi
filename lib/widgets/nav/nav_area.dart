@@ -16,13 +16,13 @@ class NavArea extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Logo(
             linearGradient: linearGradient,
             isMobile: isMobile,
           ),
-          !isMobile ? const SizedBox() : const Text('.'),
+          // !isMobile ? const SizedBox() : const Text('.'),
         ],
       ),
     );
