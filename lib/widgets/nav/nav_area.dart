@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uhandisi/widgets/nav/components/logo.dart';
+import 'package:uhandisi/widgets/nav/components/ship_and_build_titles.dart';
 
 class NavArea extends StatelessWidget {
   const NavArea({
@@ -21,6 +22,11 @@ class NavArea extends StatelessWidget {
           Logo(
             linearGradient: linearGradient,
             isMobile: isMobile,
+          ),
+          const SizedBox(width: 10),
+          const ShipAndBuildTitles(
+            shipName: 'Alliance Chieftain',
+            buildName: 'EasyChief',
           ),
           // !isMobile ? const SizedBox() : const Text('.'),
         ],
