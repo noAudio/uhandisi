@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uhandisi/widgets/nav/components/logo.dart';
+import 'package:uhandisi/widgets/nav/components/settings_buttons.dart';
 import 'package:uhandisi/widgets/nav/components/ship_and_build_titles.dart';
 
 class NavArea extends StatelessWidget {
@@ -24,10 +25,12 @@ class NavArea extends StatelessWidget {
             isMobile: isMobile,
           ),
           const SizedBox(width: 10),
-          const ShipAndBuildTitles(
-            shipName: 'Alliance Chieftain',
-            buildName: 'EasyChief',
-          ),
+          // const ShipAndBuildTitles(
+          //   shipName: 'Alliance Chieftain',
+          //   buildName: 'EasyChief',
+          // ),
+          // const SizedBox(width: 10),
+          const SettingsButtons(),
           // !isMobile ? const SizedBox() : const Text('.'),
         ],
       ),
