@@ -9,6 +9,7 @@ class SettingsButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         IconButton(
           icon: const Icon(Icons.info_outline),
