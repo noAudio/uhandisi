@@ -16,41 +16,7 @@ class SettingsButtons extends StatelessWidget {
           tooltip: 'Instructions on how to use this app.',
           splashRadius: 18.0,
           iconSize: 18.0,
-          onPressed: () {
-            showAboutDialog(
-              context: context,
-              applicationIcon: ShaderMask(
-                shaderCallback: ((Rect bounds) => const LinearGradient(
-                        colors: [Color(0xFFFF6E7F), Color(0xFFBFE9FF)])
-                    .createShader(Offset.zero & bounds.size)),
-                child: Text(
-                  'uhandisi',
-                  style: GoogleFonts.josefinSans(
-                    textStyle: const TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              applicationName: 'Painless Engineering',
-              applicationVersion: '0.0.1',
-              children: [
-                const Text(
-                  'Instructions:',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Text(
-                    'Use the "Coriolis link" tab to generate and sort materials from a coriolis link. Please use the shortlink from the coriolis site.'),
-                const Divider(),
-                const Text(
-                    'Use the "Materials list" tab to sort materials. The materials should be in the format "Material: Amount" e.g. "Iron: 5" and should each be in their own line.'),
-              ],
-            );
-          },
+          onPressed: () => aboutApp(context),
         ),
         IconButton(
           icon: const Icon(Icons.restart_alt_outlined),
@@ -69,4 +35,40 @@ class SettingsButtons extends StatelessWidget {
       ],
     );
   }
+}
+
+void aboutApp(BuildContext context) {
+  return showAboutDialog(
+    context: context,
+    applicationIcon: ShaderMask(
+      shaderCallback: ((Rect bounds) =>
+          const LinearGradient(colors: [Color(0xFFFF6E7F), Color(0xFFBFE9FF)])
+              .createShader(Offset.zero & bounds.size)),
+      child: Text(
+        'uhandisi',
+        style: GoogleFonts.josefinSans(
+          textStyle: const TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    ),
+    applicationName: 'Painless Engineering',
+    applicationVersion: '0.0.1',
+    children: [
+      const Text(
+        'Instructions:',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      const Text(
+          'Use the "Coriolis link" tab to generate and sort materials from a coriolis link. Please use the shortlink from the coriolis site.'),
+      const Divider(),
+      const Text(
+          'Use the "Materials list" tab to sort materials. The materials should be in the format "Material: Amount" e.g. "Iron: 5" and should each be in their own line.'),
+    ],
+  );
 }
