@@ -11,13 +11,13 @@ class TopLayout extends StatelessWidget {
       children: [
         const NavArea(isMobile: false),
         Row(
-          children: const [
-            Text('Hi'),
-          ],
-        ),
-        Row(
-          children: const [
-            UserInput(),
+          children: [
+            Column(
+              children: const [
+                UserInput(),
+              ],
+            ),
+            Column(),
           ],
         ),
       ],
