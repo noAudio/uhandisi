@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:uhandisi/widgets/nav/nav_area.dart';
+import 'package:uhandisi/widgets/top_layout.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'uhandisi - Painless Engineering',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Column(
-          children: [
-            const NavArea(isMobile: false),
-            Row(
-              children: const [
-                Text('Hi'),
-              ],
-            ),
-          ],
-        ),
+        body: TopLayout(),
       ),
     );
   }
