@@ -22,6 +22,7 @@ dependencies:
   intl: ^0.18.0
   google_fonts: ^3.0.1
   flutter_redux: ^0.10.0
+  redux: ^5.0.0
 
 flutter:
   uses-material-design: true

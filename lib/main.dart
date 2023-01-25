@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:uhandisi/widgets/nav/nav_area.dart';
+import 'package:uhandisi/models/app_state.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+
+import 'package:uhandisi/screens/app.dart';
+import 'package:uhandisi/reducers/index.dart';
 
 void main() {
-  runApp(const App());
-}
+  final store = Store<AppState>(appReducer, initialState: AppState.initial());
 
-class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'uhandisi - Painless Engineering',
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column(
-          children: const [
-            NavArea(isMobile: false),
-          ],
-        ),
-        // body: Text('Home'),
-      ),
-    );
-  }
+  runApp(StoreProvider<AppState>(
+    store: store,
+    child: const App(),
+  ));
 }

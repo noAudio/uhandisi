@@ -532,7 +532,7 @@ packages:
     source: hosted
     version: "1.2.1"
   redux:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: redux
       sha256: "1e86ed5b1a9a717922d0a0ca41f9bf49c1a587d50050e9426fc65b14e85ec4d7"
