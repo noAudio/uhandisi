@@ -5,9 +5,11 @@ class Logo extends StatelessWidget {
   const Logo({
     Key? key,
     required this.linearGradient,
+    required this.isMobile,
   }) : super(key: key);
 
   final LinearGradient linearGradient;
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +19,8 @@ class Logo extends StatelessWidget {
       child: Text(
         'uhandisi',
         style: GoogleFonts.josefinSans(
-          textStyle: const TextStyle(
-            fontSize: 59,
+          textStyle: TextStyle(
+            fontSize: isMobile ? 30 : 59,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
