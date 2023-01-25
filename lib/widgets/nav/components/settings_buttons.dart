@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uhandisi/widgets/common/logo.dart';
 
 class SettingsButtons extends StatelessWidget {
   const SettingsButtons({
@@ -40,20 +41,10 @@ class SettingsButtons extends StatelessWidget {
 void aboutApp(BuildContext context) {
   return showAboutDialog(
     context: context,
-    applicationIcon: ShaderMask(
-      shaderCallback: ((Rect bounds) =>
-          const LinearGradient(colors: [Color(0xFFFF6E7F), Color(0xFFBFE9FF)])
-              .createShader(Offset.zero & bounds.size)),
-      child: Text(
-        'uhandisi',
-        style: GoogleFonts.josefinSans(
-          textStyle: const TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-      ),
+    applicationIcon: const Logo(
+      isMobile: true,
+      linearGradient:
+          LinearGradient(colors: [Color(0xFFFF6E7F), Color(0xFFBFE9FF)]),
     ),
     applicationName: 'Painless Engineering',
     applicationVersion: '0.0.1',

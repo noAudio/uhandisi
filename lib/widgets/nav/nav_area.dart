@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uhandisi/widgets/nav/components/logo.dart';
+import 'package:uhandisi/widgets/common/logo.dart';
 import 'package:uhandisi/widgets/nav/components/settings_buttons.dart';
 import 'package:uhandisi/widgets/nav/components/ship_and_build_titles.dart';
 
