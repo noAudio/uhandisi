@@ -9,16 +9,13 @@ class TopLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const NavArea(isMobile: false),
-        Row(
-          children: [
-            Column(
-              children: const [
-                UserInput(),
-              ],
-            ),
-            Column(),
-          ],
+        const Center(child: NavArea(isMobile: false)),
+        Center(
+          child: Column(
+            children: const [
+              UserInput(),
+            ],
+          ),
         ),
       ],
     );

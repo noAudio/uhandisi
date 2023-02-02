@@ -16,23 +16,19 @@ class NavArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(18.0),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Wrap(
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            Logo(
-              linearGradient: linearGradient,
-              isMobile: isMobile,
-            ),
-            // const ShipAndBuildTitles(
-            //   shipName: 'Alliance Chieftain',
-            //   buildName: 'EasyChief',
-            // ),
-            const SettingsButtons(),
-            // !isMobile ? const SizedBox() : const Text('.'),
-          ],
-        ),
+      child: Column(
+        children: [
+          Logo(
+            linearGradient: linearGradient,
+            isMobile: isMobile,
+          ),
+          // const ShipAndBuildTitles(
+          //   shipName: 'Alliance Chieftain',
+          //   buildName: 'EasyChief',
+          // ),
+          const SettingsButtons(),
+          // !isMobile ? const SizedBox() : const Text('.'),
+        ],
       ),
     );
   }
