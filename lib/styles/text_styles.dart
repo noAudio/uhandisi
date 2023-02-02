@@ -18,5 +18,5 @@ class TextStyles {
     ),
   );
 
-  static double inputWidthDesktop = 280;
+  static double inputWidthDesktop = 300;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uhandisi/enums/selected_input.dart';
+import 'package:uhandisi/styles/text_styles.dart';
 import 'package:uhandisi/widgets/user_input/components/generate_materials_button.dart';
 import 'package:uhandisi/widgets/user_input/components/text_boxes.dart';
 import 'package:uhandisi/widgets/user_input/components/user_selection_button.dart';
@@ -25,7 +26,7 @@ class _UserInputState extends State<UserInput> {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: SizedBox(
-        width: 280,
+        width: TextStyles.inputWidthDesktop,
         height: 400,
         child: Column(
           children: [

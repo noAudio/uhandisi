@@ -5,10 +5,13 @@ class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
       title: 'uhandisi - Painless Engineering',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
+      home: const Scaffold(
         body: TopLayout(),
       ),
     );

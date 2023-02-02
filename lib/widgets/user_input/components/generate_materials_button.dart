@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:uhandisi/actions/get_user_input_action.dart';
 import 'package:uhandisi/models/app_state.dart';
+import 'package:uhandisi/styles/text_styles.dart';
 
 class GenerateMaterialsButton extends StatelessWidget {
   const GenerateMaterialsButton({
@@ -16,7 +17,11 @@ class GenerateMaterialsButton extends StatelessWidget {
     return StoreConnector<AppState, AppState>(
       converter: (store) => store.state,
       builder: (context, state) {
-        return FilledButton(
+        return FilledButton.tonal(
+          style: ButtonStyle(
+            fixedSize: MaterialStateProperty.all<Size>(
+                Size.fromWidth(TextStyles.inputWidthDesktop)),
+          ),
           child: const Text('Generate list'),
           onPressed: () {
             StoreProvider.of<AppState>(context)
