@@ -6,7 +6,6 @@ class TextStyles {
     textStyle: const TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.normal,
-      color: Colors.grey,
     ),
   );
 
@@ -14,7 +13,6 @@ class TextStyles {
     textStyle: const TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: Colors.black,
     ),
   );
 

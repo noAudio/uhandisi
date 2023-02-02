@@ -8,14 +8,10 @@ class TopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        const Center(child: NavArea(isMobile: false)),
+      children: const [
+        Center(child: NavArea(isMobile: false)),
         Center(
-          child: Column(
-            children: const [
-              UserInput(),
-            ],
-          ),
+          child: UserInput(),
         ),
       ],
     );

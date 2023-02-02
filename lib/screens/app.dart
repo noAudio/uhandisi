@@ -8,7 +8,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
+        colorSchemeSeed: const Color(0xFFBFE9FF),
       ),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
       title: 'uhandisi - Painless Engineering',
       debugShowCheckedModeBanner: false,
       home: const Scaffold(
