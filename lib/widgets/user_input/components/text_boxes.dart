@@ -13,22 +13,30 @@ class TextBoxes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? validateInput(String? input) {
+      RegExp regex = RegExp(r'^(https:\/\/)?s\.orbis\.zone\/[a-zA-Z0-9]{4}$');
+
+      if (input != null) {
+        if (!regex.hasMatch(input)) {
+          return 'Enter a valid coriolis link e.g. "https://s.orbis.zone/lqh4"';
+        }
+        // TODO: Add regex for list of materials
+      }
+      return null;
+    }
+
     return StoreConnector<AppState, SelectedInput>(
       converter: (store) => store.state.selectedInput,
       builder: (context, selectedInput) {
         bool currentInput = selectedInput == SelectedInput.coriolisLink;
 
-        return currentInput
-            ? DynamicTextField(
-                length: 1,
-                text: 'Enter a coriolis link',
-                controller: controller,
-              )
-            : DynamicTextField(
-                length: 5,
-                text: 'Enter a list of materials',
-                controller: controller,
-              );
+        return DynamicTextField(
+          length: currentInput ? 1 : 4,
+          text: currentInput
+              ? 'Enter a coriolis shortlink.'
+              : 'Enter a list of materials.',
+          controller: controller,
+        );
       },
     );
   }
@@ -53,6 +61,9 @@ class DynamicTextField extends StatelessWidget {
       maxLines: length,
       minLines: length,
       controller: controller,
+      autofocus: true,
+      textInputAction:
+          length > 1 ? TextInputAction.newline : TextInputAction.done,
       decoration: InputDecoration(
         hintText: text,
         border: const OutlineInputBorder(
