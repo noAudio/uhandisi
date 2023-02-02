@@ -17,4 +17,6 @@ class TextStyles {
       color: Colors.black,
     ),
   );
+
+  static double inputWidthDesktop = 280;
 }
