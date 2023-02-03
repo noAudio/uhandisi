@@ -10,6 +10,7 @@ AppState appReducer(AppState state, dynamic action) {
         materials: state.materials,
         userInput: state.userInput,
         validationError: '',
+        isComputing: state.isComputing,
         completedMaterials: state.completedMaterials,
         selectedInput: action.selectedInput);
   } else if (action is GetUserInputAction) {
@@ -20,6 +21,7 @@ AppState appReducer(AppState state, dynamic action) {
       materials: state.materials,
       userInput: action.input,
       validationError: state.validationError,
+      isComputing: state.isComputing,
       completedMaterials: state.completedMaterials,
       selectedInput: state.selectedInput,
     );
@@ -31,6 +33,7 @@ AppState appReducer(AppState state, dynamic action) {
         materials: state.materials,
         userInput: state.userInput,
         validationError: action.validationErrorText,
+        isComputing: state.isComputing,
         completedMaterials: state.completedMaterials,
         selectedInput: state.selectedInput);
   } else if (action is AddCoriolisLinkAction) {
@@ -41,6 +44,7 @@ AppState appReducer(AppState state, dynamic action) {
         materials: state.materials,
         userInput: state.userInput,
         validationError: '',
+        isComputing: state.isComputing,
         completedMaterials: state.completedMaterials,
         selectedInput: state.selectedInput);
   } else if (action is AddUserMaterialsAction) {
@@ -51,6 +55,18 @@ AppState appReducer(AppState state, dynamic action) {
         materials: state.materials,
         userInput: action.userMaterials,
         validationError: '',
+        isComputing: state.isComputing,
+        completedMaterials: state.completedMaterials,
+        selectedInput: state.selectedInput);
+  } else if (action is MaterialComputationAction) {
+    return AppState(
+        shipName: state.shipName,
+        buildName: state.buildName,
+        coriolisLink: state.coriolisLink,
+        materials: state.materials,
+        userInput: state.userInput,
+        validationError: state.validationError,
+        isComputing: action.isComputing,
         completedMaterials: state.completedMaterials,
         selectedInput: state.selectedInput);
   }

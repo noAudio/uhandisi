@@ -13,6 +13,7 @@ class AppState {
   /// the user.
   final String userInput;
   final String validationError;
+  final bool isComputing;
   final List<MaterialItem> completedMaterials;
 
   AppState({
@@ -22,6 +23,7 @@ class AppState {
     required this.materials,
     required this.userInput,
     required this.validationError,
+    required this.isComputing,
     required this.completedMaterials,
     required this.selectedInput,
   });
@@ -33,6 +35,7 @@ class AppState {
         materials: [],
         userInput: '',
         validationError: '',
+        isComputing: false,
         completedMaterials: [],
         selectedInput: SelectedInput.coriolisLink,
       );
