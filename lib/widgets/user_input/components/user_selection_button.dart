@@ -10,10 +10,12 @@ class UserSelectionButton extends StatelessWidget {
     Key? key,
     required this.text,
     required this.inputType,
+    required this.controller,
   }) : super(key: key);
 
   final String text;
   final SelectedInput inputType;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class UserSelectionButton extends StatelessWidget {
           onPressed: () {
             StoreProvider.of<AppState>(context)
                 .dispatch(SwitchSelectionAction(selectedInput: inputType));
+            controller.text = '';
           },
           child: Text(
             text,
