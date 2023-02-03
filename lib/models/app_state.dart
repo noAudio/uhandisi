@@ -12,6 +12,7 @@ class AppState {
   /// These are the materials that will be manually input by
   /// the user.
   final String userInput;
+  final String validationError;
   final List<MaterialItem> completedMaterials;
 
   AppState({
@@ -20,6 +21,7 @@ class AppState {
     required this.coriolisLink,
     required this.materials,
     required this.userInput,
+    required this.validationError,
     required this.completedMaterials,
     required this.selectedInput,
   });
@@ -30,6 +32,7 @@ class AppState {
         coriolisLink: Coriolis(link: ''),
         materials: [],
         userInput: '',
+        validationError: '',
         completedMaterials: [],
         selectedInput: SelectedInput.coriolisLink,
       );
