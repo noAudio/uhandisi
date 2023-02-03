@@ -21,6 +21,7 @@ class GenerateMaterialsButton extends StatelessWidget {
       child: const Text('Generate list'),
       onPressed: () {
         onSubmit();
+        // TODO: Add logic to handle user input
       },
     );
   }
