@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:uhandisi/actions/add_coriolis_link_action.dart';
-import 'package:uhandisi/actions/add_user_materials_action.dart';
-import 'package:uhandisi/actions/validation_input_error_action.dart';
+import 'package:uhandisi/actions/index.dart';
 import 'package:uhandisi/enums/selected_input.dart';
 import 'package:uhandisi/models/app_state.dart';
 import 'package:uhandisi/models/coriolis.dart';

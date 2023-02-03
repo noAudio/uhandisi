@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:uhandisi/actions/switch_selection_action.dart';
+import 'package:uhandisi/actions/index.dart';
 import 'package:uhandisi/enums/selected_input.dart';
 import 'package:uhandisi/models/app_state.dart';
 import 'package:uhandisi/styles/text_styles.dart';
