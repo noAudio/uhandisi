@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uhandisi/actions/add_coriolis_link_action.dart';
+import 'package:uhandisi/actions/add_user_materials_action.dart';
+import 'package:uhandisi/actions/validation_input_error_action.dart';
 import 'package:uhandisi/enums/selected_input.dart';
+import 'package:uhandisi/models/app_state.dart';
+import 'package:uhandisi/models/coriolis.dart';
 import 'package:uhandisi/styles/text_styles.dart';
 import 'package:uhandisi/widgets/user_input/components/generate_materials_button.dart';
 import 'package:uhandisi/widgets/user_input/components/text_boxes.dart';
@@ -13,43 +19,110 @@ class UserInput extends StatefulWidget {
 }
 
 class _UserInputState extends State<UserInput> {
-  final controller = TextEditingController();
+  final _controller = TextEditingController();
 
   @override
   void dispose() {
-    controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: SizedBox(
-        width: TextStyles.inputWidthDesktop,
-        height: 400,
-        child: Column(
-          children: [
-            Row(
-              children: const [
-                UserSelectionButton(
-                  text: 'Coriolis link',
-                  inputType: SelectedInput.coriolisLink,
+    return StoreConnector<AppState, dynamic>(
+      converter: (store) => store.state,
+      builder: (context, state) {
+        String validateInput(String input) {
+          // TODO: User input validation logic
+          RegExp linkRegex =
+              RegExp(r'^(https:\/\/)?s\.orbis\.zone\/[a-zA-Z0-9]{4}$');
+          RegExp materialsRegex = RegExp(r'^[a-zA-Z\s]+[a-zA-Z]+: \d+$');
+          if (state.selectedInput == SelectedInput.coriolisLink) {
+            if (!linkRegex.hasMatch(input)) {
+              return 'Enter a valid coriolis shortlink i.e. "s.orbis.zone/..."';
+            } else {
+              return '';
+            }
+          } else if (state.selectedInput == SelectedInput.materialList) {
+            List<String> materials = input.split('\n');
+            List<String> invalidInputs = [];
+
+            for (int i = 0; i < materials.length; i++) {
+              if (!materialsRegex.hasMatch(materials[i])) {
+                invalidInputs.add(materials[i]);
+              }
+            }
+            if (invalidInputs.isNotEmpty) {
+              String invalidInputsAsStrings = invalidInputs.reduce(
+                  (value, element) =>
+                      '$value${element != "\n" ? ", \n$element" : ""}');
+              return 'The item${invalidInputs.length > 1 ? "s" : ""} \n$invalidInputsAsStrings \ndo${invalidInputs.length > 1 ? "" : "es"} not follow the format "Material: Amount"!';
+            } else {
+              return '';
+            }
+          } else {
+            return '';
+          }
+        }
+
+        void onSubmit() {
+          String inputValue = _controller.value.text;
+          String validationError = validateInput(inputValue);
+
+          if (validationError == '') {
+            //Dispatch the input value to state, check if its a link or material list.
+            if (state.selectedInput == SelectedInput.coriolisLink) {
+              StoreProvider.of<AppState>(context).dispatch(
+                  AddCoriolisLinkAction(
+                      coriolisLink: Coriolis(link: inputValue)));
+            } else {
+              StoreProvider.of<AppState>(context)
+                  .dispatch(AddUserMaterialsAction(userMaterials: inputValue));
+            }
+          } else {
+            StoreProvider.of<AppState>(context).dispatch(
+                ValidationErrorInputAction(
+                    validationErrorText: validationError));
+          }
+        }
+
+        return Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: SizedBox(
+            width: TextStyles.inputWidthDesktop,
+            height: 400,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    UserSelectionButton(
+                      text: 'Coriolis link',
+                      inputType: SelectedInput.coriolisLink,
+                      controller: _controller,
+                    ),
+                    UserSelectionButton(
+                      text: 'Materials list',
+                      inputType: SelectedInput.materialList,
+                      controller: _controller,
+                    ),
+                  ],
                 ),
-                UserSelectionButton(
-                  text: 'Materials list',
-                  inputType: SelectedInput.materialList,
+                TextBoxes(
+                  controller: _controller,
+                  // onChanged: onSubmit,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                GenerateMaterialsButton(
+                  controller: _controller,
+                  onSubmit: onSubmit,
                 ),
               ],
             ),
-            TextBoxes(controller: controller),
-            const SizedBox(
-              height: 5,
-            ),
-            GenerateMaterialsButton(controller: controller),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

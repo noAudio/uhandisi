@@ -1,34 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:uhandisi/actions/get_user_input_action.dart';
-import 'package:uhandisi/models/app_state.dart';
 import 'package:uhandisi/styles/text_styles.dart';
 
 class GenerateMaterialsButton extends StatelessWidget {
   const GenerateMaterialsButton({
     Key? key,
     required this.controller,
+    required this.onSubmit,
   }) : super(key: key);
 
   final TextEditingController controller;
+  final void Function() onSubmit;
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, AppState>(
-      converter: (store) => store.state,
-      builder: (context, state) {
-        return FilledButton.tonal(
-          style: ButtonStyle(
-            fixedSize: MaterialStateProperty.all<Size>(
-                Size.fromWidth(TextStyles.inputWidthDesktop)),
-          ),
-          child: const Text('Generate list'),
-          onPressed: () {
-            StoreProvider.of<AppState>(context)
-                .dispatch(GetUserInputAction(input: controller.text));
-            controller.clear();
-          },
-        );
+    return FilledButton.tonal(
+      style: ButtonStyle(
+        fixedSize: MaterialStateProperty.all<Size>(
+            Size.fromWidth(TextStyles.inputWidthDesktop)),
+      ),
+      child: const Text('Generate list'),
+      onPressed: () {
+        onSubmit();
       },
     );
   }
