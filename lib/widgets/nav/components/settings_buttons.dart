@@ -77,17 +77,6 @@ void aboutApp(BuildContext context) {
           ],
         ),
       ),
-      // const Text(
-      //   'Instructions:',
-      //   style: TextStyle(
-      //     fontWeight: FontWeight.bold,
-      //   ),
-      // ),
-      // const Text(
-      //     'Use the "Coriolis link" tab to generate and sort materials from a coriolis link. Please use the shortlink from the coriolis site.'),
-      // const Divider(),
-      // const Text(
-      //     'Use the "Materials list" tab to sort materials. The materials should be in the format "Material: Amount" e.g. "Iron: 5" and should each be in their own line.'),
     ],
   );
 }

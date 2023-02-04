@@ -8,11 +8,9 @@ class TextBoxes extends StatelessWidget {
   const TextBoxes({
     Key? key,
     required this.controller,
-    // required this.onChanged,
   }) : super(key: key);
 
   final TextEditingController controller;
-  // final void Function() onChanged;
 
   @override
   Widget build(BuildContext context) {
