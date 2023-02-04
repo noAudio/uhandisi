@@ -31,7 +31,7 @@ class _UserInputState extends State<UserInput> {
       converter: (store) => store.state,
       builder: (context, state) {
         String validateInput(String input) {
-          // TODO: User input validation logic
+          // User input validation logic
           RegExp linkRegex =
               RegExp(r'^(https:\/\/)?s\.orbis\.zone\/[a-zA-Z0-9]{4}$');
           RegExp materialsRegex = RegExp(r'^[a-zA-Z\s]+[a-zA-Z]+: \d+$');
