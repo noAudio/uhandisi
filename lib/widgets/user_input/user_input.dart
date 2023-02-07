@@ -39,13 +39,13 @@ class _UserInputState extends State<UserInput> {
 
           if (validationError == '') {
             //Dispatch the input value to state, check if its a link or material list.
-            if (state.selectedInput == SelectedInput.coriolisLink) {
+            if (selectedInput == SelectedInput.coriolisLink) {
               StoreProvider.of<AppState>(context).dispatch(
                   AddCoriolisLinkAction(
                       coriolisLink: Coriolis(link: inputValue)));
             } else {
               StoreProvider.of<AppState>(context)
-                  .dispatch(AddUserMaterialsAction(userMaterials: inputValue));
+                  .dispatch(GetUserInputAction(input: inputValue));
             }
           } else {
             StoreProvider.of<AppState>(context).dispatch(
