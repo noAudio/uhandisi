@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:uhandisi/actions/index.dart';
 import 'package:uhandisi/data/processed_items.dart';
 import 'package:uhandisi/models/app_state.dart';
@@ -6,6 +7,7 @@ import 'package:uhandisi/models/material_item.dart';
 AppState appReducer(AppState state, dynamic action) {
   if (action is SwitchSelectionAction) {
     return AppState(
+        themeMode: state.themeMode,
         shipName: state.shipName,
         buildName: state.buildName,
         coriolisLink: state.coriolisLink,
@@ -17,6 +19,7 @@ AppState appReducer(AppState state, dynamic action) {
         selectedInput: action.selectedInput);
   } else if (action is GetUserInputAction) {
     return AppState(
+      themeMode: state.themeMode,
       shipName: state.shipName,
       buildName: state.buildName,
       coriolisLink: state.coriolisLink,
@@ -29,6 +32,7 @@ AppState appReducer(AppState state, dynamic action) {
     );
   } else if (action is ValidationErrorInputAction) {
     return AppState(
+        themeMode: state.themeMode,
         shipName: state.shipName,
         buildName: state.buildName,
         coriolisLink: state.coriolisLink,
@@ -40,6 +44,7 @@ AppState appReducer(AppState state, dynamic action) {
         selectedInput: state.selectedInput);
   } else if (action is AddCoriolisLinkAction) {
     return AppState(
+        themeMode: state.themeMode,
         shipName: state.shipName,
         buildName: state.buildName,
         coriolisLink: action.coriolisLink,
@@ -51,6 +56,7 @@ AppState appReducer(AppState state, dynamic action) {
         selectedInput: state.selectedInput);
   } else if (action is MaterialComputationAction) {
     return AppState(
+        themeMode: state.themeMode,
         shipName: state.shipName,
         buildName: state.buildName,
         coriolisLink: state.coriolisLink,
@@ -73,6 +79,7 @@ AppState appReducer(AppState state, dynamic action) {
     }
 
     return AppState(
+      themeMode: state.themeMode,
       shipName: state.shipName,
       buildName: state.buildName,
       coriolisLink: state.coriolisLink,
@@ -122,6 +129,7 @@ AppState appReducer(AppState state, dynamic action) {
       }
     }
     return AppState(
+      themeMode: state.themeMode,
       shipName: state.shipName,
       buildName: state.buildName,
       coriolisLink: state.coriolisLink,
@@ -134,6 +142,7 @@ AppState appReducer(AppState state, dynamic action) {
     );
   } else if (action is ResetMaterialsAction) {
     return AppState(
+        themeMode: state.themeMode,
         shipName: state.shipName,
         buildName: state.buildName,
         coriolisLink: state.coriolisLink,
@@ -143,6 +152,21 @@ AppState appReducer(AppState state, dynamic action) {
         isComputing: state.isComputing,
         completedMaterials: {},
         selectedInput: state.selectedInput);
+  } else if (action is ChangeThemeAction) {
+    var theme =
+        state.themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+    return AppState(
+      themeMode: theme,
+      shipName: state.shipName,
+      buildName: state.buildName,
+      coriolisLink: state.coriolisLink,
+      materials: state.materials,
+      userInput: state.userInput,
+      validationError: state.validationError,
+      isComputing: state.isComputing,
+      completedMaterials: state.completedMaterials,
+      selectedInput: state.selectedInput,
+    );
   }
 
   return state;

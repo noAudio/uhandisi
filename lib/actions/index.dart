@@ -9,3 +9,4 @@ export 'material_computation_action.dart';
 export 'convert_user_input_action.dart';
 export 'sort_materials_action.dart';
 export 'reset_materials_action.dart';
+export 'change_theme_action.dart';

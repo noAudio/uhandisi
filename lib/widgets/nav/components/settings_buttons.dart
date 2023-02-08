@@ -11,43 +11,54 @@ class SettingsButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        IconButton(
-          icon: const Icon(
-            Icons.info_outline,
-            color: Color(0xFFBFE9FF),
-          ),
-          tooltip: 'Instructions on how to use this app.',
-          splashRadius: 18.0,
-          iconSize: 18.0,
-          onPressed: () => aboutApp(context),
-        ),
-        IconButton(
-          icon: const Icon(
-            Icons.restart_alt_outlined,
-            color: Color(0xFFBFE9FF),
-          ),
-          tooltip: 'Reset materials.',
-          splashRadius: 18.0,
-          iconSize: 18.0,
-          onPressed: () {
-            StoreProvider.of<AppState>(context)
-                .dispatch(ResetMaterialsAction());
-          },
-        ),
-        IconButton(
-          icon: const Icon(
-            Icons.light_mode_outlined,
-            color: Color(0xFFBFE9FF),
-          ),
-          tooltip: 'Current: Light Mode',
-          splashRadius: 18.0,
-          iconSize: 18.0,
-          onPressed: () {},
-        ),
-      ],
+    return StoreConnector<AppState, dynamic>(
+      converter: (store) => store.state,
+      builder: (context, state) {
+        IconData iconData = state.themeMode == ThemeMode.dark
+            ? Icons.light_mode
+            : Icons.dark_mode;
+        String hoverText = state.themeMode == ThemeMode.dark
+            ? 'Switch to light mode.'
+            : 'Switch to dark mode.';
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: const Icon(
+                Icons.info_outline,
+              ),
+              tooltip: 'Instructions on how to use this app.',
+              splashRadius: 18.0,
+              iconSize: 18.0,
+              onPressed: () => aboutApp(context),
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.restart_alt_outlined,
+              ),
+              tooltip: 'Reset materials.',
+              splashRadius: 18.0,
+              iconSize: 18.0,
+              onPressed: () {
+                StoreProvider.of<AppState>(context)
+                    .dispatch(ResetMaterialsAction());
+              },
+            ),
+            IconButton(
+              icon: Icon(
+                iconData,
+              ),
+              tooltip: hoverText,
+              splashRadius: 18.0,
+              iconSize: 18.0,
+              onPressed: () {
+                StoreProvider.of<AppState>(context)
+                    .dispatch(ChangeThemeAction());
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
