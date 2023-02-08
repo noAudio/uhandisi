@@ -44,8 +44,11 @@ class _UserInputState extends State<UserInput> {
                   AddCoriolisLinkAction(
                       coriolisLink: Coriolis(link: inputValue)));
             } else {
+              var inputs = inputValue.split('\n');
               StoreProvider.of<AppState>(context)
-                  .dispatch(GetUserInputAction(input: inputValue));
+                  .dispatch(GetUserInputAction(input: inputs));
+              StoreProvider.of<AppState>(context)
+                  .dispatch(ConvertUserInputAction());
             }
           } else {
             StoreProvider.of<AppState>(context).dispatch(

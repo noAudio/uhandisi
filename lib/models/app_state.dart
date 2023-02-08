@@ -11,7 +11,7 @@ class AppState {
 
   /// These are the materials that will be manually input by
   /// the user.
-  final String userInput;
+  final List<String> userInput;
   final String validationError;
   final bool isComputing;
   final Map<String, List<Map<String, List<MaterialItem>>>> completedMaterials;
@@ -33,7 +33,7 @@ class AppState {
         buildName: '',
         coriolisLink: Coriolis(link: ''),
         materials: [],
-        userInput: '',
+        userInput: [],
         validationError: '',
         isComputing: false,
         completedMaterials: {},

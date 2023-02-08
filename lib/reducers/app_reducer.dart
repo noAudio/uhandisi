@@ -1,4 +1,5 @@
 import 'package:uhandisi/actions/index.dart';
+import 'package:uhandisi/data/processed_items.dart';
 import 'package:uhandisi/models/app_state.dart';
 import 'package:uhandisi/models/material_item.dart';
 
@@ -48,17 +49,6 @@ AppState appReducer(AppState state, dynamic action) {
         isComputing: state.isComputing,
         completedMaterials: state.completedMaterials,
         selectedInput: state.selectedInput);
-  } else if (action is AddUserMaterialsAction) {
-    return AppState(
-        shipName: state.shipName,
-        buildName: state.buildName,
-        coriolisLink: state.coriolisLink,
-        materials: state.materials,
-        userInput: action.userMaterials,
-        validationError: '',
-        isComputing: state.isComputing,
-        completedMaterials: state.completedMaterials,
-        selectedInput: state.selectedInput);
   } else if (action is MaterialComputationAction) {
     return AppState(
         shipName: state.shipName,
@@ -71,17 +61,15 @@ AppState appReducer(AppState state, dynamic action) {
         completedMaterials: state.completedMaterials,
         selectedInput: state.selectedInput);
   } else if (action is ConvertUserInputAction) {
-    List<String> userInputs = state.userInput.split('/n');
+    var userInput = state.userInput;
     List<MaterialItem> userMaterials = [];
 
-    for (String item in userInputs) {
-      if (item.contains(':')) {
-        var splitItem = item.split(':');
-        userMaterials.add(MaterialItem(
-          name: splitItem[0],
-          amount: int.parse(splitItem[1]),
-        ));
-      }
+    for (int i = 0; i < userInput.length; i++) {
+      var item = userInput[i];
+      var splitItem = item.split(':');
+      var materialItem =
+          MaterialItem(name: splitItem[0], amount: int.parse(splitItem[1]));
+      userMaterials.add(materialItem);
     }
 
     return AppState(
@@ -93,6 +81,55 @@ AppState appReducer(AppState state, dynamic action) {
       validationError: state.validationError,
       isComputing: state.isComputing,
       completedMaterials: state.completedMaterials,
+      selectedInput: state.selectedInput,
+    );
+  } else if (action is SortMaterialsAction) {
+    List<MaterialItem> sorted = [];
+    var materials = state.materials;
+    // print(materials);
+
+    for (MaterialItem mat in materials) {
+      for (MaterialItem comparisonMat in processedMaterialItems) {
+        if (mat.name == comparisonMat.name) {
+          comparisonMat.amount = mat.amount;
+          sorted.add(comparisonMat);
+        }
+      }
+    }
+
+    sorted.sort(
+      (a, b) => a.grade!.compareTo(b.grade!),
+    );
+
+    Map<String, List<Map<String, List<MaterialItem>>>> categorised = {};
+
+    for (MaterialItem item in sorted) {
+      if (categorised.containsKey(item.kind)) {
+        var kind = categorised['${item.kind}']!;
+        for (Map<String, List<MaterialItem>> section in kind) {
+          if (section.containsKey('${item.section}')) {
+            section['${item.section}']!.add(item);
+          } else {
+            section['${item.section}'] = [item];
+          }
+        }
+      } else {
+        categorised['${item.kind}'] = [
+          {
+            '${item.section}': [item]
+          }
+        ];
+      }
+    }
+    return AppState(
+      shipName: state.shipName,
+      buildName: state.buildName,
+      coriolisLink: state.coriolisLink,
+      materials: state.materials,
+      userInput: state.userInput,
+      validationError: state.validationError,
+      isComputing: state.isComputing,
+      completedMaterials: categorised,
       selectedInput: state.selectedInput,
     );
   }
