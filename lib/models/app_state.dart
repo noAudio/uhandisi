@@ -14,7 +14,7 @@ class AppState {
   final String userInput;
   final String validationError;
   final bool isComputing;
-  final List<MaterialItem> completedMaterials;
+  final Map<String, List<Map<String, List<MaterialItem>>>> completedMaterials;
 
   AppState({
     required this.shipName,
@@ -36,7 +36,7 @@ class AppState {
         userInput: '',
         validationError: '',
         isComputing: false,
-        completedMaterials: [],
+        completedMaterials: {},
         selectedInput: SelectedInput.coriolisLink,
       );
 }
