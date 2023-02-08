@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uhandisi/actions/index.dart';
+import 'package:uhandisi/models/app_state.dart';
 import 'package:uhandisi/widgets/common/logo.dart';
 
 class SettingsButtons extends StatelessWidget {
@@ -29,7 +32,10 @@ class SettingsButtons extends StatelessWidget {
           tooltip: 'Reset materials.',
           splashRadius: 18.0,
           iconSize: 18.0,
-          onPressed: () {},
+          onPressed: () {
+            StoreProvider.of<AppState>(context)
+                .dispatch(ResetMaterialsAction());
+          },
         ),
         IconButton(
           icon: const Icon(

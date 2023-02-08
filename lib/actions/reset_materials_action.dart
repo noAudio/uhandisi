@@ -1,0 +1,3 @@
+class ResetMaterialsAction {
+  ResetMaterialsAction();
+}

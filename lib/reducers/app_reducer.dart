@@ -132,6 +132,17 @@ AppState appReducer(AppState state, dynamic action) {
       completedMaterials: categorised,
       selectedInput: state.selectedInput,
     );
+  } else if (action is ResetMaterialsAction) {
+    return AppState(
+        shipName: state.shipName,
+        buildName: state.buildName,
+        coriolisLink: state.coriolisLink,
+        materials: state.materials,
+        userInput: state.userInput,
+        validationError: state.validationError,
+        isComputing: state.isComputing,
+        completedMaterials: {},
+        selectedInput: state.selectedInput);
   }
 
   return state;
