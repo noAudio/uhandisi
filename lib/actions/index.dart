@@ -6,3 +6,7 @@ export 'switch_selection_action.dart';
 export 'get_user_input_action.dart';
 export 'validation_input_error_action.dart';
 export 'material_computation_action.dart';
+export 'convert_user_input_action.dart';
+export 'sort_materials_action.dart';
+export 'reset_materials_action.dart';
+export 'change_theme_action.dart';

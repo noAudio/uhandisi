@@ -5,6 +5,7 @@ import 'package:uhandisi/enums/selected_input.dart';
 import 'package:uhandisi/models/app_state.dart';
 import 'package:uhandisi/models/coriolis.dart';
 import 'package:uhandisi/styles/text_styles.dart';
+import 'package:uhandisi/utils.dart';
 import 'package:uhandisi/widgets/user_input/components/generate_materials_button.dart';
 import 'package:uhandisi/widgets/user_input/components/text_boxes.dart';
 import 'package:uhandisi/widgets/user_input/components/user_selection_button.dart';
@@ -30,52 +31,24 @@ class _UserInputState extends State<UserInput> {
     return StoreConnector<AppState, dynamic>(
       converter: (store) => store.state,
       builder: (context, state) {
-        String validateInput(String input) {
-          // TODO: User input validation logic
-          RegExp linkRegex =
-              RegExp(r'^(https:\/\/)?s\.orbis\.zone\/[a-zA-Z0-9]{4}$');
-          RegExp materialsRegex = RegExp(r'^[a-zA-Z\s]+[a-zA-Z]+: \d+$');
-          if (state.selectedInput == SelectedInput.coriolisLink) {
-            if (!linkRegex.hasMatch(input)) {
-              return 'Enter a valid coriolis shortlink i.e. "s.orbis.zone/..."';
-            } else {
-              return '';
-            }
-          } else if (state.selectedInput == SelectedInput.materialList) {
-            List<String> materials = input.split('\n');
-            List<String> invalidInputs = [];
-
-            for (int i = 0; i < materials.length; i++) {
-              if (!materialsRegex.hasMatch(materials[i])) {
-                invalidInputs.add(materials[i]);
-              }
-            }
-            if (invalidInputs.isNotEmpty) {
-              String invalidInputsAsStrings = invalidInputs.reduce(
-                  (value, element) =>
-                      '$value${element != "\n" ? ", \n$element" : ""}');
-              return 'The item${invalidInputs.length > 1 ? "s" : ""} \n$invalidInputsAsStrings \ndo${invalidInputs.length > 1 ? "" : "es"} not follow the format "Material: Amount"!';
-            } else {
-              return '';
-            }
-          } else {
-            return '';
-          }
-        }
+        SelectedInput selectedInput = state.selectedInput;
 
         void onSubmit() {
           String inputValue = _controller.value.text;
-          String validationError = validateInput(inputValue);
+          String validationError = validateInput(inputValue, selectedInput);
 
           if (validationError == '') {
             //Dispatch the input value to state, check if its a link or material list.
-            if (state.selectedInput == SelectedInput.coriolisLink) {
+            if (selectedInput == SelectedInput.coriolisLink) {
               StoreProvider.of<AppState>(context).dispatch(
                   AddCoriolisLinkAction(
                       coriolisLink: Coriolis(link: inputValue)));
             } else {
+              var inputs = inputValue.split('\n');
               StoreProvider.of<AppState>(context)
-                  .dispatch(AddUserMaterialsAction(userMaterials: inputValue));
+                  .dispatch(GetUserInputAction(input: inputs));
+              StoreProvider.of<AppState>(context)
+                  .dispatch(ConvertUserInputAction());
             }
           } else {
             StoreProvider.of<AppState>(context).dispatch(
@@ -114,6 +87,7 @@ class _UserInputState extends State<UserInput> {
                 GenerateMaterialsButton(
                   controller: _controller,
                   onSubmit: onSubmit,
+                  selectedInput: selectedInput,
                 ),
               ],
             ),

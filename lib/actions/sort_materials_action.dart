@@ -1,0 +1,3 @@
+class SortMaterialsAction {
+  SortMaterialsAction();
+}

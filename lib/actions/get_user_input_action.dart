@@ -1,5 +1,5 @@
 class GetUserInputAction {
-  final String input;
+  final List<String> input;
 
   GetUserInputAction({required this.input});
 }
