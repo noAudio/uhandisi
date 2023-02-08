@@ -84,6 +84,7 @@ class _UserInputState extends State<UserInput> {
                 GenerateMaterialsButton(
                   controller: _controller,
                   onSubmit: onSubmit,
+                  selectedInput: selectedInput,
                 ),
               ],
             ),
