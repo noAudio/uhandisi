@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uhandisi/models/material_item.dart';
+import 'package:uhandisi/widgets/generated_materials/components/minor_category.dart';
 
 class GeneratedMaterials extends StatelessWidget {
   const GeneratedMaterials({
@@ -16,37 +17,10 @@ class GeneratedMaterials extends StatelessWidget {
       child: GridView.count(
         crossAxisCount: 2,
         shrinkWrap: true,
+        physics: const ScrollPhysics(),
         children: [
           for (var subCategory in materials)
-            for (var item in subCategory.entries)
-              SizedBox(
-                width: 400,
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text(item.key),
-                        Column(
-                          children: [
-                            for (var material in item.value)
-                              Row(
-                                children: [
-                                  Checkbox(
-                                    value: false,
-                                    onChanged: (value) {},
-                                  ),
-                                  Text('${material.name}: '),
-                                  Text('${material.amount}')
-                                ],
-                              )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+            for (var item in subCategory.entries) MinorCategory(item: item),
         ],
       ),
     );
