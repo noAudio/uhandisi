@@ -6,8 +6,17 @@ import 'package:uhandisi/widgets/generated_materials/generated_materials.dart';
 import 'package:uhandisi/widgets/nav/nav_area.dart';
 import 'package:uhandisi/widgets/user_input/user_input.dart';
 
-class TopLayout extends StatelessWidget {
+class TopLayout extends StatefulWidget {
   const TopLayout({Key? key}) : super(key: key);
+
+  @override
+  State<TopLayout> createState() => _TopLayoutState();
+}
+
+class _TopLayoutState extends State<TopLayout> {
+  bool rawSelected = true;
+  bool encodedSelected = false;
+  bool manufacturedSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +29,8 @@ class TopLayout extends StatelessWidget {
             encodedMaterials,
             manufacturedMaterials;
         if (completedMaterials.isNotEmpty) {
-          encodedMaterials = completedMaterials['Encoded'];
           rawMaterials = completedMaterials['Raw'];
+          encodedMaterials = completedMaterials['Encoded'];
           manufacturedMaterials = completedMaterials['Manufactured'];
         }
         return Column(
@@ -34,14 +43,81 @@ class TopLayout extends StatelessWidget {
             if (completedMaterials.isNotEmpty)
               Column(
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (rawMaterials != null)
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              rawSelected = true;
+                              encodedSelected = false;
+                              manufacturedSelected = false;
+                            });
+                          },
+                          child: Text(
+                            'Raw',
+                            style: TextStyle(
+                              fontWeight: rawSelected
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      if (encodedMaterials != null)
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              encodedSelected = true;
+                              rawSelected = false;
+                              manufacturedSelected = false;
+                            });
+                          },
+                          child: Text(
+                            'Encoded',
+                            style: TextStyle(
+                              fontWeight: encodedSelected
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      if (manufacturedMaterials != null)
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              manufacturedSelected = true;
+                              rawSelected = false;
+                              encodedSelected = false;
+                            });
+                          },
+                          child: Text(
+                            'Manufactured',
+                            style: TextStyle(
+                              fontWeight: manufacturedSelected
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
                   if (rawMaterials != null)
-                    GeneratedMaterials(materials: rawMaterials),
+                    Visibility(
+                      visible: rawSelected,
+                      child: GeneratedMaterials(materials: rawMaterials),
+                    ),
                   if (encodedMaterials != null)
-                    for (var subCategory in encodedMaterials)
-                      Text('$subCategory'),
+                    Visibility(
+                      visible: encodedSelected,
+                      child: GeneratedMaterials(materials: encodedMaterials),
+                    ),
                   if (manufacturedMaterials != null)
-                    for (var subCategory in manufacturedMaterials)
-                      Text('$subCategory'),
+                    Visibility(
+                      visible: manufacturedSelected,
+                      child:
+                          GeneratedMaterials(materials: manufacturedMaterials),
+                    ),
                 ],
               ),
           ],
