@@ -14,32 +14,33 @@ class MaterialData extends StatefulWidget {
 }
 
 class _MaterialDataState extends State<MaterialData> {
-  bool isChecked = false;
-
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Checkbox(
-          value: isChecked,
+          value: widget.material.isChecked,
           onChanged: (value) {
             setState(() {
-              isChecked = !isChecked;
+              widget.material.isChecked = !widget.material.isChecked;
             });
           },
         ),
         GestureDetector(
           onTap: () {
             setState(() {
-              isChecked = !isChecked;
+              widget.material.isChecked = !widget.material.isChecked;
             });
           },
           child: Text(
             '${widget.material.name}: ${widget.material.amount}',
             style: TextStyle(
-              decoration:
-                  isChecked ? TextDecoration.lineThrough : TextDecoration.none,
-              fontStyle: isChecked ? FontStyle.italic : FontStyle.normal,
+              decoration: widget.material.isChecked
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none,
+              fontStyle: widget.material.isChecked
+                  ? FontStyle.italic
+                  : FontStyle.normal,
             ),
           ),
         ),
