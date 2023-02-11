@@ -36,11 +36,15 @@ class _TopLayoutState extends State<TopLayout> {
 
         List<MaterialKind> availableMaterials = [];
 
-        if (rawMaterials != null) availableMaterials.add(MaterialKind.raw);
-        if (encodedMaterials != null)
+        if (rawMaterials != null) {
+          availableMaterials.add(MaterialKind.raw);
+        }
+        if (encodedMaterials != null) {
           availableMaterials.add(MaterialKind.encoded);
-        if (manufacturedMaterials != null)
+        }
+        if (manufacturedMaterials != null) {
           availableMaterials.add(MaterialKind.manufactured);
+        }
 
         return Column(
           children: [
@@ -55,63 +59,35 @@ class _TopLayoutState extends State<TopLayout> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (rawMaterials != null)
+                      for (MaterialKind kind in availableMaterials)
                         TextButton(
                           onPressed: () {
                             setState(() {
-                              materialKind = MaterialKind.raw;
+                              materialKind = kind;
                             });
                           },
                           child: Text(
-                            'Raw',
+                            kind == MaterialKind.raw
+                                ? 'Raw'
+                                : kind == MaterialKind.encoded
+                                    ? 'Encoded'
+                                    : 'Manufactured',
                             style: TextStyle(
-                              fontWeight: materialKind == MaterialKind.raw
+                              fontWeight: materialKind == kind
                                   ? FontWeight.bold
                                   : FontWeight.normal,
-                            ),
-                          ),
-                        ),
-                      if (encodedMaterials != null)
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              materialKind = MaterialKind.encoded;
-                            });
-                          },
-                          child: Text(
-                            'Encoded',
-                            style: TextStyle(
-                              fontWeight: materialKind == MaterialKind.encoded
-                                  ? FontWeight.bold
-                                  : FontWeight.normal,
-                            ),
-                          ),
-                        ),
-                      if (manufacturedMaterials != null)
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              materialKind = MaterialKind.manufactured;
-                            });
-                          },
-                          child: Text(
-                            'Manufactured',
-                            style: TextStyle(
-                              fontWeight:
-                                  materialKind == MaterialKind.manufactured
-                                      ? FontWeight.bold
-                                      : FontWeight.normal,
                             ),
                           ),
                         ),
                     ],
                   ),
                   GeneratedMaterials(
-                      materials: materialKind == MaterialKind.raw
-                          ? rawMaterials!
-                          : materialKind == MaterialKind.encoded
-                              ? encodedMaterials!
-                              : manufacturedMaterials!),
+                    materials: materialKind == MaterialKind.raw
+                        ? rawMaterials!
+                        : materialKind == MaterialKind.encoded
+                            ? encodedMaterials!
+                            : manufacturedMaterials!,
+                  ),
                 ],
               ),
           ],
