@@ -46,6 +46,10 @@ class _TopLayoutState extends State<TopLayout> {
           availableMaterials.add(MaterialKind.manufactured);
         }
 
+        if (availableMaterials.isNotEmpty) {
+          materialKind = availableMaterials[0];
+        }
+
         return Column(
           children: [
             const Center(child: NavArea(isMobile: false)),
