@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uhandisi/enums/material_kind.dart';
 import 'package:uhandisi/models/app_state.dart';
 import 'package:uhandisi/models/material_item.dart';
 import 'package:uhandisi/widgets/generated_materials/generated_materials.dart';
@@ -14,10 +15,7 @@ class TopLayout extends StatefulWidget {
 }
 
 class _TopLayoutState extends State<TopLayout> {
-  bool rawSelected = true;
-  bool encodedSelected = false;
-  bool manufacturedSelected = false;
-
+  MaterialKind materialKind = MaterialKind.raw;
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, dynamic>(
@@ -25,14 +23,25 @@ class _TopLayoutState extends State<TopLayout> {
       builder: (context, state) {
         Map<String, List<Map<String, List<MaterialItem>>>> completedMaterials =
             state.completedMaterials;
+
         List<Map<String, List<MaterialItem>>>? rawMaterials,
             encodedMaterials,
             manufacturedMaterials;
+
         if (completedMaterials.isNotEmpty) {
           rawMaterials = completedMaterials['Raw'];
           encodedMaterials = completedMaterials['Encoded'];
           manufacturedMaterials = completedMaterials['Manufactured'];
         }
+
+        List<MaterialKind> availableMaterials = [];
+
+        if (rawMaterials != null) availableMaterials.add(MaterialKind.raw);
+        if (encodedMaterials != null)
+          availableMaterials.add(MaterialKind.encoded);
+        if (manufacturedMaterials != null)
+          availableMaterials.add(MaterialKind.manufactured);
+
         return Column(
           children: [
             const Center(child: NavArea(isMobile: false)),
@@ -50,15 +59,13 @@ class _TopLayoutState extends State<TopLayout> {
                         TextButton(
                           onPressed: () {
                             setState(() {
-                              rawSelected = true;
-                              encodedSelected = false;
-                              manufacturedSelected = false;
+                              materialKind = MaterialKind.raw;
                             });
                           },
                           child: Text(
                             'Raw',
                             style: TextStyle(
-                              fontWeight: rawSelected
+                              fontWeight: materialKind == MaterialKind.raw
                                   ? FontWeight.bold
                                   : FontWeight.normal,
                             ),
@@ -68,15 +75,13 @@ class _TopLayoutState extends State<TopLayout> {
                         TextButton(
                           onPressed: () {
                             setState(() {
-                              encodedSelected = true;
-                              rawSelected = false;
-                              manufacturedSelected = false;
+                              materialKind = MaterialKind.encoded;
                             });
                           },
                           child: Text(
                             'Encoded',
                             style: TextStyle(
-                              fontWeight: encodedSelected
+                              fontWeight: materialKind == MaterialKind.encoded
                                   ? FontWeight.bold
                                   : FontWeight.normal,
                             ),
@@ -86,38 +91,27 @@ class _TopLayoutState extends State<TopLayout> {
                         TextButton(
                           onPressed: () {
                             setState(() {
-                              manufacturedSelected = true;
-                              rawSelected = false;
-                              encodedSelected = false;
+                              materialKind = MaterialKind.manufactured;
                             });
                           },
                           child: Text(
                             'Manufactured',
                             style: TextStyle(
-                              fontWeight: manufacturedSelected
-                                  ? FontWeight.bold
-                                  : FontWeight.normal,
+                              fontWeight:
+                                  materialKind == MaterialKind.manufactured
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
                             ),
                           ),
                         ),
                     ],
                   ),
-                  if (rawMaterials != null)
-                    Visibility(
-                      visible: rawSelected,
-                      child: GeneratedMaterials(materials: rawMaterials),
-                    ),
-                  if (encodedMaterials != null)
-                    Visibility(
-                      visible: encodedSelected,
-                      child: GeneratedMaterials(materials: encodedMaterials),
-                    ),
-                  if (manufacturedMaterials != null)
-                    Visibility(
-                      visible: manufacturedSelected,
-                      child:
-                          GeneratedMaterials(materials: manufacturedMaterials),
-                    ),
+                  GeneratedMaterials(
+                      materials: materialKind == MaterialKind.raw
+                          ? rawMaterials!
+                          : materialKind == MaterialKind.encoded
+                              ? encodedMaterials!
+                              : manufacturedMaterials!),
                 ],
               ),
           ],
