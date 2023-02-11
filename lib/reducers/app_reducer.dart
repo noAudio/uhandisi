@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uhandisi/actions/index.dart';
 import 'package:uhandisi/data/processed_items.dart';
 import 'package:uhandisi/models/app_state.dart';
+import 'package:uhandisi/models/coriolis.dart';
 import 'package:uhandisi/models/material_item.dart';
 
 AppState appReducer(AppState state, dynamic action) {
@@ -143,12 +144,12 @@ AppState appReducer(AppState state, dynamic action) {
   } else if (action is ResetMaterialsAction) {
     return AppState(
         themeMode: state.themeMode,
-        shipName: state.shipName,
-        buildName: state.buildName,
-        coriolisLink: state.coriolisLink,
-        materials: state.materials,
-        userInput: state.userInput,
-        validationError: state.validationError,
+        shipName: '',
+        buildName: '',
+        coriolisLink: Coriolis(link: ''),
+        materials: [],
+        userInput: [],
+        validationError: '',
         isComputing: state.isComputing,
         completedMaterials: {},
         selectedInput: state.selectedInput);

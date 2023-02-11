@@ -27,9 +27,7 @@ class GenerateMaterialsButton extends StatelessWidget {
       child: const Text('Generate list'),
       onPressed: () {
         onSubmit();
-        // TODO: Add logic to handle user input
-        // StoreProvider.of<AppState>(context)
-        //     .dispatch(MaterialComputationAction(isComputing: true));
+        // TODO: Handle coriolis link
         if (selectedInput == SelectedInput.materialList) {
           StoreProvider.of<AppState>(context).dispatch(SortMaterialsAction());
         }
