@@ -18,20 +18,27 @@ class App extends StatelessWidget {
             useMaterial3: true,
             colorSchemeSeed: const Color(0xFFBFE9FF),
           ),
-          darkTheme: ThemeData.dark(),
+          darkTheme: ThemeData.dark(useMaterial3: true),
           themeMode: state.themeMode,
           // themeMode: ThemeMode.light,
           title: 'uhandisi - Painless Engineering',
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            appBar: AppBar(
-              title: const Logo(
-                  linearGradient: LinearGradient(
-                      colors: [Color(0xFFFF6E7F), Color(0xFFBFE9FF)]),
-                  isMobile: false),
-              centerTitle: true,
-            ),
-            body: const TopLayout(),
+            appBar: PreferredSize(
+                preferredSize: const Size(0, 200),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      Logo(
+                        linearGradient: LinearGradient(
+                            colors: [Color(0xFFFF6E7F), Color(0xFFBFE9FF)]),
+                        isMobile: false,
+                      ),
+                    ],
+                  ),
+                )),
             floatingActionButton: Wrap(
               direction: Axis.horizontal,
               children: [
@@ -73,6 +80,7 @@ class App extends StatelessWidget {
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.miniCenterFloat,
+            body: const TopLayout(),
           ),
         );
       },
