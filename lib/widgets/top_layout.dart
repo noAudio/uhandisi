@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uhandisi/actions/filter_material_kind_action.dart';
 import 'package:uhandisi/enums/material_kind.dart';
 import 'package:uhandisi/models/app_state.dart';
 import 'package:uhandisi/models/material_item.dart';
 import 'package:uhandisi/widgets/generated_materials/generated_materials.dart';
-import 'package:uhandisi/widgets/nav/nav_area.dart';
 import 'package:uhandisi/widgets/user_input/user_input.dart';
 
-class TopLayout extends StatefulWidget {
+// class TopLayout extends StatefulWidget {
+//   const TopLayout({Key? key}) : super(key: key);
+
+//   @override
+//   State<TopLayout> createState() => _TopLayoutState();
+// }
+
+class TopLayout extends StatelessWidget {
   const TopLayout({Key? key}) : super(key: key);
 
-  @override
-  State<TopLayout> createState() => _TopLayoutState();
-}
-
-class _TopLayoutState extends State<TopLayout> {
-  MaterialKind materialKind = MaterialKind.raw;
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, dynamic>(
@@ -46,55 +47,59 @@ class _TopLayoutState extends State<TopLayout> {
           availableMaterials.add(MaterialKind.manufactured);
         }
 
+        MaterialKind materialKind = state.materialKind;
+
         if (availableMaterials.isNotEmpty) {
-          materialKind = availableMaterials[0];
+          if (!availableMaterials.contains(materialKind)) {
+            materialKind = availableMaterials[0];
+          }
         }
 
-        return Column(
-          children: [
-            const Center(child: NavArea(isMobile: false)),
-            if (completedMaterials.isEmpty)
-              const Center(
-                child: UserInput(),
-              ),
-            if (completedMaterials.isNotEmpty)
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      for (MaterialKind kind in availableMaterials)
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              materialKind = kind;
-                            });
-                          },
-                          child: Text(
-                            kind == MaterialKind.raw
-                                ? 'Raw'
-                                : kind == MaterialKind.encoded
-                                    ? 'Encoded'
-                                    : 'Manufactured',
-                            style: TextStyle(
-                              fontWeight: materialKind == kind
-                                  ? FontWeight.bold
-                                  : FontWeight.normal,
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              if (completedMaterials.isEmpty)
+                const Center(
+                  child: UserInput(),
+                ),
+              if (completedMaterials.isNotEmpty)
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        for (MaterialKind kind in availableMaterials)
+                          TextButton(
+                            onPressed: () {
+                              StoreProvider.of<AppState>(context).dispatch(
+                                  FilterMaterialKindAction(materialKind: kind));
+                            },
+                            child: Text(
+                              kind == MaterialKind.raw
+                                  ? 'Raw'
+                                  : kind == MaterialKind.encoded
+                                      ? 'Encoded'
+                                      : 'Manufactured',
+                              style: TextStyle(
+                                fontWeight: materialKind == kind
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
+                              ),
                             ),
                           ),
-                        ),
-                    ],
-                  ),
-                  GeneratedMaterials(
-                    materials: materialKind == MaterialKind.raw
-                        ? rawMaterials!
-                        : materialKind == MaterialKind.encoded
-                            ? encodedMaterials!
-                            : manufacturedMaterials!,
-                  ),
-                ],
-              ),
-          ],
+                      ],
+                    ),
+                    GeneratedMaterials(
+                      materials: materialKind == MaterialKind.raw
+                          ? rawMaterials!
+                          : materialKind == MaterialKind.encoded
+                              ? encodedMaterials!
+                              : manufacturedMaterials!,
+                    ),
+                  ],
+                ),
+            ],
+          ),
         );
       },
     );
