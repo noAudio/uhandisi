@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uhandisi/enums/material_kind.dart';
 import 'package:uhandisi/enums/selected_input.dart';
 import 'package:uhandisi/models/coriolis.dart';
 import 'package:uhandisi/models/material_item.dart';
@@ -17,6 +18,7 @@ class AppState {
   final String validationError;
   final bool isComputing;
   final Map<String, List<Map<String, List<MaterialItem>>>> completedMaterials;
+  final MaterialKind materialKind;
 
   AppState({
     required this.themeMode,
@@ -29,6 +31,7 @@ class AppState {
     required this.isComputing,
     required this.completedMaterials,
     required this.selectedInput,
+    required this.materialKind,
   });
 
   factory AppState.initial() => AppState(
@@ -42,5 +45,6 @@ class AppState {
         isComputing: false,
         completedMaterials: {},
         selectedInput: SelectedInput.coriolisLink,
+        materialKind: MaterialKind.raw,
       );
 }
