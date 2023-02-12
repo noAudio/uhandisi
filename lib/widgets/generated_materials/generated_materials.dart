@@ -12,16 +12,20 @@ class GeneratedMaterials extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 650,
-      child: GridView.count(
-        crossAxisCount: 2,
-        shrinkWrap: true,
-        physics: const ScrollPhysics(),
-        children: [
-          for (var subCategory in materials)
-            for (var item in subCategory.entries) MinorCategory(item: item),
-        ],
+    return Expanded(
+      child: SizedBox(
+        width: 650,
+        child: GridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          // physics: const NeverScrollableScrollPhysics(),
+          physics: const ScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          children: [
+            for (var subCategory in materials)
+              for (var item in subCategory.entries) MinorCategory(item: item),
+          ],
+        ),
       ),
     );
   }

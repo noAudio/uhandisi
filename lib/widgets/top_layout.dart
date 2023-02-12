@@ -55,51 +55,46 @@ class TopLayout extends StatelessWidget {
           }
         }
 
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              if (completedMaterials.isEmpty)
-                const Center(
-                  child: UserInput(),
-                ),
-              if (completedMaterials.isNotEmpty)
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        for (MaterialKind kind in availableMaterials)
-                          TextButton(
-                            onPressed: () {
-                              StoreProvider.of<AppState>(context).dispatch(
-                                  FilterMaterialKindAction(materialKind: kind));
-                            },
-                            child: Text(
-                              kind == MaterialKind.raw
-                                  ? 'Raw'
-                                  : kind == MaterialKind.encoded
-                                      ? 'Encoded'
-                                      : 'Manufactured',
-                              style: TextStyle(
-                                fontWeight: materialKind == kind
-                                    ? FontWeight.bold
-                                    : FontWeight.normal,
-                              ),
-                            ),
-                          ),
-                      ],
+        return Column(
+          children: [
+            if (completedMaterials.isEmpty)
+              const Center(
+                child: UserInput(),
+              ),
+            if (completedMaterials.isNotEmpty)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  for (MaterialKind kind in availableMaterials)
+                    TextButton(
+                      onPressed: () {
+                        StoreProvider.of<AppState>(context).dispatch(
+                            FilterMaterialKindAction(materialKind: kind));
+                      },
+                      child: Text(
+                        kind == MaterialKind.raw
+                            ? 'Raw'
+                            : kind == MaterialKind.encoded
+                                ? 'Encoded'
+                                : 'Manufactured',
+                        style: TextStyle(
+                          fontWeight: materialKind == kind
+                              ? FontWeight.bold
+                              : FontWeight.normal,
+                        ),
+                      ),
                     ),
-                    GeneratedMaterials(
-                      materials: materialKind == MaterialKind.raw
-                          ? rawMaterials!
-                          : materialKind == MaterialKind.encoded
-                              ? encodedMaterials!
-                              : manufacturedMaterials!,
-                    ),
-                  ],
-                ),
-            ],
-          ),
+                ],
+              ),
+            if (completedMaterials.isNotEmpty)
+              GeneratedMaterials(
+                materials: materialKind == MaterialKind.raw
+                    ? rawMaterials!
+                    : materialKind == MaterialKind.encoded
+                        ? encodedMaterials!
+                        : manufacturedMaterials!,
+              ),
+          ],
         );
       },
     );
