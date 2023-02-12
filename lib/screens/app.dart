@@ -12,7 +12,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, dynamic>(
       converter: (store) => store.state,
-      builder: (context, state) {
+      builder: (BuildContext context, state) {
         return MaterialApp(
           theme: ThemeData(
             useMaterial3: true,
@@ -44,36 +44,29 @@ class App extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.all(3),
-                  child: FloatingActionButton.extended(
-                    // TODO: Change from an aboutDialog to modal.
-                    onPressed: () => aboutApp(context),
-                    label: const Text('Instructions'),
-                    icon: const Icon(Icons.info_outline),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(3),
-                  child: FloatingActionButton.extended(
+                  child: FloatingActionButton(
                     onPressed: () {
                       StoreProvider.of<AppState>(context)
                           .dispatch(ResetMaterialsAction());
                     },
-                    label: const Text('Reset'),
-                    icon: const Icon(Icons.restart_alt_outlined),
+                    tooltip: 'Reset',
+                    child: const Icon(Icons.restart_alt_outlined),
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.all(3),
-                  child: FloatingActionButton.extended(
+                  child: FloatingActionButton(
                     onPressed: () {
                       StoreProvider.of<AppState>(context)
                           .dispatch(ChangeThemeAction());
                     },
-                    label: Text(
-                        'Theme: ${state.themeMode == ThemeMode.light ? "Light" : "Dark"}'),
-                    icon: Icon(state.themeMode == ThemeMode.light
-                        ? Icons.light_mode_outlined
-                        : Icons.dark_mode_outlined),
+                    tooltip:
+                        'Theme: ${state.themeMode == ThemeMode.light ? "Light" : "Dark"}',
+                    child: Icon(
+                      state.themeMode == ThemeMode.light
+                          ? Icons.light_mode_outlined
+                          : Icons.dark_mode_outlined,
+                    ),
                   ),
                 ),
               ],
