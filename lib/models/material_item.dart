@@ -6,6 +6,7 @@ class MaterialItem {
   int? grade;
   String? kind;
   String? section;
+  bool isChecked;
 
   MaterialItem({
     required this.name,
@@ -13,6 +14,7 @@ class MaterialItem {
     this.grade,
     this.kind,
     this.section,
+    this.isChecked = false,
   });
 
   MaterialItem copyWith({
@@ -21,6 +23,7 @@ class MaterialItem {
     int? grade,
     String? kind,
     String? section,
+    bool? isChecked,
   }) {
     return MaterialItem(
       name: name ?? this.name,
@@ -28,6 +31,7 @@ class MaterialItem {
       grade: grade ?? this.grade,
       kind: kind ?? this.kind,
       section: section ?? this.section,
+      isChecked: isChecked ?? this.isChecked,
     );
   }
 
@@ -38,6 +42,7 @@ class MaterialItem {
       'grade': grade,
       'kind': kind,
       'section': section,
+      'isChecked': isChecked,
     };
   }
 
@@ -48,6 +53,7 @@ class MaterialItem {
       grade: map['grade']?.toInt(),
       kind: map['kind'],
       section: map['section'],
+      isChecked: map['isChecked'],
     );
   }
 
@@ -59,7 +65,7 @@ class MaterialItem {
 
   @override
   String toString() {
-    return 'MaterialItem(name: $name, amount: $amount, grade: $grade, kind: $kind, section: $section)';
+    return 'MaterialItem(name: $name, amount: $amount, grade: $grade, kind: $kind, section: $section, isChecked: $isChecked)';
   }
 
   @override
@@ -71,7 +77,8 @@ class MaterialItem {
         other.amount == amount &&
         other.grade == grade &&
         other.kind == kind &&
-        other.section == section;
+        other.section == section &&
+        other.isChecked == isChecked;
   }
 
   @override
@@ -80,6 +87,7 @@ class MaterialItem {
         amount.hashCode ^
         grade.hashCode ^
         kind.hashCode ^
-        section.hashCode;
+        section.hashCode ^
+        isChecked.hashCode;
   }
 }

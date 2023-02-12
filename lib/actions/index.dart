@@ -10,3 +10,4 @@ export 'convert_user_input_action.dart';
 export 'sort_materials_action.dart';
 export 'reset_materials_action.dart';
 export 'change_theme_action.dart';
+export 'filter_material_kind_action.dart';
