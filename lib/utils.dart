@@ -1,3 +1,4 @@
+import 'package:uhandisi/data/processed_items.dart';
 import 'package:uhandisi/enums/selected_input.dart';
 
 class FormFactor {
@@ -24,16 +25,33 @@ String validateInput(String input, SelectedInput selectedInput) {
     for (int i = 0; i < materials.length; i++) {
       if (!materialsRegex.hasMatch(materials[i])) {
         invalidInputs.add(materials[i]);
+      } else {
+        String materialName = materials[i].split(':')[0];
+        if (!checkIfActualMaterial(materialName)) {
+          invalidInputs.add(materials[i]);
+        }
       }
     }
     if (invalidInputs.isNotEmpty) {
       String invalidInputsAsStrings = invalidInputs.reduce(
           (value, element) => '$value${element != "\n" ? ", \n$element" : ""}');
-      return 'The item${invalidInputs.length > 1 ? "s" : ""} \n$invalidInputsAsStrings \ndo${invalidInputs.length > 1 ? "" : "es"} not follow the format "Material: Amount"!';
+      return 'The item${invalidInputs.length > 1 ? "s" : ""} \n$invalidInputsAsStrings \ndo${invalidInputs.length > 1 ? "" : "es"} not follow the format "Material: Amount"\nor is not a valid material!';
     } else {
       return '';
     }
   } else {
     return '';
   }
+}
+
+bool checkIfActualMaterial(String materialName) {
+  bool isMaterial = false;
+
+  for (var mat in processedMaterialItems) {
+    if (materialName == mat.name) {
+      isMaterial = true;
+    }
+  }
+
+  return isMaterial;
 }
