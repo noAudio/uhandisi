@@ -49,4 +49,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 .fleet/
-.env
+env.dart
