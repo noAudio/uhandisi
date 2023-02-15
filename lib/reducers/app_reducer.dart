@@ -111,6 +111,7 @@ AppState appReducer(AppState state, dynamic action) {
       for (MaterialItem comparisonMat in processedMaterialItems) {
         if (mat.name == comparisonMat.name) {
           comparisonMat.amount = mat.amount;
+          comparisonMat.isChecked = false;
           sorted.add(comparisonMat);
         }
       }
