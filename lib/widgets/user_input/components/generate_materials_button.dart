@@ -19,19 +19,28 @@ class GenerateMaterialsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final store = StoreProvider.of<AppState>(context);
     return FilledButton.tonal(
       style: ButtonStyle(
         fixedSize: MaterialStateProperty.all<Size>(
             Size.fromWidth(TextStyles.inputWidthDesktop)),
       ),
-      child: const Text('Generate list'),
-      onPressed: () {
-        onSubmit();
-        // TODO: Handle coriolis link
-        if (selectedInput == SelectedInput.materialList) {
-          StoreProvider.of<AppState>(context).dispatch(SortMaterialsAction());
-        }
-      },
+      onPressed: store.state.isComputing
+          ? null
+          : () async {
+              onSubmit();
+              // TODO: Handle coriolis link
+              if (selectedInput == SelectedInput.materialList) {
+                store.dispatch(SortMaterialsAction());
+              } else {}
+            },
+      child: store.state.isComputing
+          ? const SizedBox(
+              height: 15,
+              width: 15,
+              child: CircularProgressIndicator.adaptive(),
+            )
+          : const Text('Generate list'),
     );
   }
 }
