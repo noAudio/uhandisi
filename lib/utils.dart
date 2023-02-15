@@ -33,6 +33,9 @@ String validateInput(String input, SelectedInput selectedInput) {
       }
     }
     if (invalidInputs.isNotEmpty) {
+      if (invalidInputs.length == 1 && invalidInputs[0] == '') {
+        return 'Please type in a list of materials.';
+      }
       String invalidInputsAsStrings = invalidInputs.reduce(
           (value, element) => '$value${element != "\n" ? ", \n$element" : ""}');
       return 'The item${invalidInputs.length > 1 ? "s" : ""} \n$invalidInputsAsStrings \ndo${invalidInputs.length > 1 ? "" : "es"} not follow the format "Material: Amount"\nor is not a valid material!';
