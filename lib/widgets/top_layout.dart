@@ -65,6 +65,7 @@ class TopLayout extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // TODO: Swicth to SegmentedButtons
                   for (MaterialKind kind in availableMaterials)
                     TextButton(
                       onPressed: () {
