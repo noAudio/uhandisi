@@ -20,8 +20,9 @@ class TopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, dynamic>(
-      converter: (store) => store.state,
-      builder: (context, state) {
+      converter: (store) => store,
+      builder: (context, store) {
+        var state = store.state;
         Map<String, List<Map<String, List<MaterialItem>>>> completedMaterials =
             state.completedMaterials;
 
@@ -65,28 +66,59 @@ class TopLayout extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // TODO: Swicth to SegmentedButtons
-                  for (MaterialKind kind in availableMaterials)
-                    TextButton(
-                      onPressed: () {
-                        StoreProvider.of<AppState>(context).dispatch(
-                            FilterMaterialKindAction(materialKind: kind));
-                      },
-                      child: Text(
-                        kind == MaterialKind.raw
-                            ? 'Raw'
-                            : kind == MaterialKind.encoded
-                                ? 'Encoded'
-                                : 'Manufactured',
-                        style: TextStyle(
-                          fontWeight: materialKind == kind
-                              ? FontWeight.bold
-                              : FontWeight.normal,
+                  SegmentedButton<MaterialKind>(
+                    segments: <ButtonSegment<MaterialKind>>[
+                      for (MaterialKind kind in availableMaterials)
+                        ButtonSegment<MaterialKind>(
+                          value: kind,
+                          label: Text(
+                            kind == MaterialKind.raw
+                                ? 'Raw'
+                                : kind == MaterialKind.encoded
+                                    ? 'Encoded'
+                                    : 'Manufactured',
+                          ),
+                          icon: Icon(kind == MaterialKind.raw
+                              ? Icons.diamond_rounded
+                              : kind == MaterialKind.encoded
+                                  ? Icons.topic_rounded
+                                  : Icons.construction_rounded),
                         ),
-                      ),
-                    ),
+                    ],
+                    selected: <MaterialKind>{materialKind},
+                    onSelectionChanged:
+                        (Set<MaterialKind> currentMaterialKind) {
+                      store.dispatch(FilterMaterialKindAction(
+                          materialKind: currentMaterialKind.first));
+                    },
+                  ),
                 ],
               ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     // TODO: Swicth to SegmentedButtons
+            //     for (MaterialKind kind in availableMaterials)
+            //       TextButton(
+            //         onPressed: () {
+            //           StoreProvider.of<AppState>(context).dispatch(
+            //               FilterMaterialKindAction(materialKind: kind));
+            //         },
+            //         child: Text(
+            //           kind == MaterialKind.raw
+            //               ? 'Raw'
+            //               : kind == MaterialKind.encoded
+            //                   ? 'Encoded'
+            //                   : 'Manufactured',
+            //           style: TextStyle(
+            //             fontWeight: materialKind == kind
+            //                 ? FontWeight.bold
+            //                 : FontWeight.normal,
+            //           ),
+            //         ),
+            //       ),
+            //   ],
+            // ),
             if (completedMaterials.isNotEmpty)
               GeneratedMaterials(
                 materials: materialKind == MaterialKind.raw
