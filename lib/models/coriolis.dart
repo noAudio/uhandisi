@@ -6,6 +6,9 @@ class Coriolis {
     required this.link,
   });
 
+  /// Returns the last 4 digits of the given url.
+  String shortCode() => link.substring(link.length - 4);
+
   Coriolis copyWith({
     String? link,
   }) {

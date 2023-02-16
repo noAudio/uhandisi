@@ -29,8 +29,9 @@ class _UserInputState extends State<UserInput> {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, dynamic>(
-      converter: (store) => store.state,
-      builder: (context, state) {
+      converter: (store) => store,
+      builder: (context, store) {
+        var state = store.state;
         SelectedInput selectedInput = state.selectedInput;
 
         void onSubmit() {
@@ -40,20 +41,16 @@ class _UserInputState extends State<UserInput> {
           if (validationError == '') {
             //Dispatch the input value to state, check if its a link or material list.
             if (selectedInput == SelectedInput.coriolisLink) {
-              StoreProvider.of<AppState>(context).dispatch(
-                  AddCoriolisLinkAction(
-                      coriolisLink: Coriolis(link: inputValue)));
+              store.dispatch(AddCoriolisLinkAction(
+                  coriolisLink: Coriolis(link: inputValue)));
             } else {
               var inputs = inputValue.split('\n');
-              StoreProvider.of<AppState>(context)
-                  .dispatch(GetUserInputAction(input: inputs));
-              StoreProvider.of<AppState>(context)
-                  .dispatch(ConvertUserInputAction());
+              store.dispatch(GetUserInputAction(input: inputs));
+              store.dispatch(ConvertUserInputAction());
             }
           } else {
-            StoreProvider.of<AppState>(context).dispatch(
-                ValidationErrorInputAction(
-                    validationErrorText: validationError));
+            store.dispatch(ValidationErrorInputAction(
+                validationErrorText: validationError));
           }
         }
 
